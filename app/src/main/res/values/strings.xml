@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GetFood</string>
+    <string name="title_home">主页</string>
+    <string name="title_orders">订单</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_order_fragment">俺的订单</string>
+    <string name="title_make_fragment">快来点餐</string>
+</resources>
