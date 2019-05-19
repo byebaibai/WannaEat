@@ -6,4 +6,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="title_order_fragment">俺的订单</string>
     <string name="title_make_fragment">快来点餐</string>
+    <string name="name_food_image">食物图片</string>
 </resources>

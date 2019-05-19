@@ -29,7 +29,7 @@ public class OrderFragment extends Fragment {
 //    private String mParam1;
 //    private String mParam2;
     private TextView textView;
-//    private OnFragmentInteractionListener mListener;
+    //private OnFragmentInteractionListener mListener;
 //
 //    public OrderFragment() {
 //        // Required empty public constructor

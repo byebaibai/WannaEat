@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="@dimen/dp6">
+
+    <ImageView
+        android:id="@+id/image_food_item"
+        android:layout_width="@dimen/dp50"
+        android:layout_height="@dimen/dp50"
+        android:contentDescription="@string/name_food_image"
+        android:scaleType="fitXY"
+        android:src="@drawable/pic" />
+
+    <TextView
+        android:id="@+id/text_food_item"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp50"
+        android:layout_toRightOf="@+id/image_food_item"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp6"
+        android:text="大碗牛肉"
+        android:textColor="@color/black" />
+</RelativeLayout>

@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MakeFragment"
-    android:id="@+id/frameLayout">
+    android:id="@+id/fragment_make_id">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/fragment_make_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:background="#03A9F4"
-        android:text="@string/title_make_fragment"
-        tools:layout_conversion_absoluteHeight="731dp"
-        tools:layout_conversion_absoluteWidth="411dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="horizontal">
 
-</RelativeLayout>
+        <ListView
+            android:id="@+id/view_type_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:scrollbars="none"
+            android:divider="@null" />
+
+
+        <com.homework.getfood.PinnedHeaderListView
+            android:id="@+id/view_pinned_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_weight="5"
+            android:background="@android:color/white">
+        </com.homework.getfood.PinnedHeaderListView>
+
+    </LinearLayout>
+
+</FrameLayout>

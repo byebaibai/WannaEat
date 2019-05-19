@@ -13,6 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import com.homework.getfood.util.IconFetcher;
+
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
     private MakeFragment fragment_make;
     private OrderFragment fragment_order;
@@ -35,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-
         initViews();
     }
 

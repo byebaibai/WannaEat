@@ -6,4 +6,7 @@
     <color name="colorTabSelected">#CC33FF</color>
     <color name="colorTabIndicator">#66ff33</color>
     <color name="colorTabText">#85C1E9</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray_light">#EBEDF0</color>
 </resources>
