@@ -16,7 +16,7 @@ public class FoodListAdapter extends SectionedBaseAdapter {
     private Context mContext;
     private String[] leftStr;
     private String[][] rightStr;
-
+    private DialogDetail dialogDetail;
     public FoodListAdapter(Context context, String[] leftStr, String[][] rightStr) {
         this.mContext = context;
         this.leftStr = leftStr;
@@ -57,7 +57,25 @@ public class FoodListAdapter extends SectionedBaseAdapter {
         layout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Toast.makeText(mContext, rightStr[section][position], Toast.LENGTH_SHORT).show();
+                final Context context = arg0.getContext();
+                dialogDetail = new DialogDetail(arg0.getContext());
+                dialogDetail.setInfo(rightStr[section][position],"12",false);
+                dialogDetail.setYesOnclickListener("确定", new DialogDetail.onYesOnclickListener() {
+                    @Override
+                    public void onYesClick() {
+                        Integer num = dialogDetail.getInfo();
+                        Toast.makeText(context,"点击了--确定--按钮 : " + num.toString(),Toast.LENGTH_LONG).show();
+                        dialogDetail.dismiss();
+                    }
+                });
+                dialogDetail.setNoOnclickListener("取消", new DialogDetail.onNoOnclickListener() {
+                    @Override
+                    public void onNoClick() {
+                        Toast.makeText(context,"点击了--取消--按钮",Toast.LENGTH_LONG).show();
+                        dialogDetail.dismiss();
+                    }
+                });
+                dialogDetail.show();
             }
         });
         return layout;

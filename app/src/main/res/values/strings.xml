@@ -7,4 +7,6 @@
     <string name="title_order_fragment">俺的订单</string>
     <string name="title_make_fragment">快来点餐</string>
     <string name="name_food_image">食物图片</string>
+    <string name="shopping_cart">购物车</string>
+    <string name="settlement">去结算</string>
 </resources>

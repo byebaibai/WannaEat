@@ -3,33 +3,194 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MakeFragment"
     android:id="@+id/fragment_make_id">
 
-    <LinearLayout
+    <TextView
+        android:background="@color/consumer_bg"
+        android:visibility="gone"
+        android:layout_weight="1"
+        android:id="@+id/noData"
+        android:textSize="@dimen/dp14"
+        android:gravity="center"
+        android:text="暂无更多数据"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <android.support.percent.PercentRelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:id="@+id/parentLayout"
+        tools:ignore="UselessParent">
 
-        <ListView
-            android:id="@+id/view_type_list"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/menulist"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:scrollbars="none"
-            android:divider="@null" />
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_heightPercent="90%"
+            android:visibility="visible">
+
+            <ListView
+                android:id="@+id/view_type_list"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:divider="@null"
+                android:fastScrollEnabled="false"
+                android:scrollbars="none" />
 
 
-        <com.homework.getfood.PinnedHeaderListView
-            android:id="@+id/view_pinned_list"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dp10"
-            android:layout_weight="5"
-            android:background="@android:color/white">
-        </com.homework.getfood.PinnedHeaderListView>
+            <com.homework.getfood.PinnedHeaderListView
+                android:id="@+id/view_pinned_list"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_weight="3"
+                android:background="@android:color/white" />
 
-    </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/toolBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
+
+
+            <RelativeLayout
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@color/user_center_black_text"
+                android:padding="@dimen/dp5">
+
+                <ImageView
+                    android:id="@+id/shopping_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingRight="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp5"
+                    android:src="@drawable/shopping_cart" />
+
+                <TextView
+                    android:id="@+id/shoppingNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/shopping_cart"
+                    android:layout_alignRight="@+id/shopping_cart"
+                    android:background="@drawable/shape_shopping_cart"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dp8"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/shoppingPrise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp30"
+                    android:layout_toRightOf="@+id/shopping_cart"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dp18" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/settlement"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/shopping_cart_bg"
+                android:gravity="center"
+                android:text="@string/settlement"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp16" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:visibility="gone"
+            android:id="@+id/cardLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/toolBar"
+            android:orientation="vertical">
+
+            <View
+                android:visibility="gone"
+                android:id="@+id/bg_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:background="#a0000000" />
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/cardShopLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="160dp"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shopping_cart_bg"
+                    android:paddingBottom="@dimen/dp6"
+                    android:paddingLeft="@dimen/dp20"
+                    android:paddingTop="@dimen/dp6"
+                    android:text="@string/shopping_cart"
+                    android:textColor="@color/black" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:background="@color/consumer_bg">
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/defaultText"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="当前购物车为空快去选购吧！"
+                        android:textSize="@dimen/dp12" />
+
+                    <ListView
+                        android:cacheColorHint="#00000000"
+                        android:divider="@color/user_center_divide_line"
+                        android:dividerHeight="1px"
+                        android:listSelector="#00000000"
+                        android:id="@+id/shopproductListView"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    </ListView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </android.support.percent.PercentRelativeLayout>
 
 </FrameLayout>
