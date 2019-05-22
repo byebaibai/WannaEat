@@ -1,5 +1,6 @@
 package com.homework.getfood;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,7 +17,12 @@ import com.homework.getfood.FoodTypeListAdapter;
 import com.homework.getfood.FoodListAdapter;
 import com.homework.getfood.R;
 import com.homework.getfood.PinnedHeaderListView;
+import com.homework.getfood.bean.FoodBean;
+import com.homework.getfood.context.AppContext;
 
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import butterknife.BindView;
 
@@ -40,16 +46,16 @@ public class MakeFragment extends Fragment {
     private boolean isScroll = true;
     private FoodTypeListAdapter adapter;
 
-    private String[] leftStr = new String[]{"面食类", "盖饭", "寿司", "烧烤", "酒水", "凉菜", "小吃", "粥", "休闲"};
-    private boolean[] flagArray = {true, false, false, false, false, false, false, false, false};
-    private String[][] rightStr = new String[][]{{"热干面", "臊子面", "烩面"},
-            {"番茄鸡蛋", "红烧排骨", "农家小炒肉"},
-            {"芝士", "丑小丫", "金枪鱼"}, {"羊肉串", "烤鸡翅", "烤羊排"}, {"长城干红", "燕京鲜啤", "青岛鲜啤"},
-            {"拌粉丝", "大拌菜", "菠菜花生"}, {"小食组", "紫薯"},
-            {"小米粥", "大米粥", "南瓜粥", "玉米粥", "紫米粥"}, {"儿童小汽车", "悠悠球", "熊大", " 熊二", "光头强"}
-    };
-    
+    private ArrayList<String> leftStr;
+    private ArrayList<Boolean> flagArray;
+    private ArrayList<ArrayList<String>> rightStr;
+    private ArrayList<String> temp;
     private View rootView;
+
+    private AppContext globalFood;
+    private ArrayList<FoodBean> foodData = new ArrayList<FoodBean>();
+    private HashMap<String,FoodBean> foodMap;
+    private int typeNum;
 //    private OnFragmentInteractionListener mListener;
 //
 //    public MakeFragment() {
@@ -79,17 +85,46 @@ public class MakeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+    }
+    private void initData(){
+        foodData = globalFood.getData();
+        foodMap = globalFood.getMap();
+        leftStr = new ArrayList<String>();
+        rightStr = new ArrayList<ArrayList<String>>();
+        flagArray = new ArrayList<Boolean>();
+        boolean Flag = true;
+        for (int i = 1;i<= globalFood.getTypeNum();i++){
+            if (i == 1) flagArray.add(true);
+            else flagArray.add(false);
+            temp = new ArrayList<String>();
+            for (int j = 0;j < foodData.size();j++){
+                FoodBean x = foodData.get(j);
+                if (x.getTypeID() == i){
+                    if(Flag){
+                        leftStr.add(x.getType());
+                        Flag = false;
+                    }
+                    temp.add(x.getName());
+                }
+                if (x.getTypeID() > i) break;
+            }
+            rightStr.add(temp);
+            Flag = true;
+        }
+        for (int i = 0; i<leftStr.size();i++){
+            System.out.println(leftStr.get(i));
+        }
     }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        initData();
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_make, container, false);
         pinnedListView = (PinnedHeaderListView) rootView.findViewById(R.id.view_pinned_list);
         ButterKnife.bind(this, rootView);
-        final FoodListAdapter sectionedAdapter = new FoodListAdapter(rootView.getContext(), leftStr, rightStr);
+        final FoodListAdapter sectionedAdapter = new FoodListAdapter(rootView.getContext(), leftStr, rightStr, foodMap);
         pinnedListView.setAdapter(sectionedAdapter);
         adapter = new FoodTypeListAdapter(rootView.getContext(), leftStr, flagArray);
         foodtypeListView.setAdapter(adapter);
@@ -98,11 +133,11 @@ public class MakeFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 isScroll = false;
 
-                for (int i = 0; i < leftStr.length; i++) {
+                for (int i = 0; i < leftStr.size(); i++) {
                     if (i == position) {
-                        flagArray[i] = true;
+                        flagArray.set(i,true);
                     } else {
-                        flagArray[i] = false;
+                        flagArray.set(i,false);
                     }
                 }
                 adapter.notifyDataSetChanged();
@@ -141,12 +176,12 @@ public class MakeFragment extends Fragment {
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 if (isScroll) {
-                    for (int i = 0; i < rightStr.length; i++) {
+                    for (int i = 0; i < rightStr.size(); i++) {
                         if (i == sectionedAdapter.getSectionForPosition(pinnedListView.getFirstVisiblePosition())) {
-                            flagArray[i] = true;
+                            flagArray.set(i,true);
                             x = i;
                         } else {
-                            flagArray[i] = false;
+                            flagArray.set(i,false);
                         }
                     }
                     if (x != y) {
@@ -175,6 +210,7 @@ public class MakeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        globalFood = (AppContext) getActivity().getApplication();
         //textView = (TextView)getActivity().findViewById(R.id.fragment_make_id);
     }
 
@@ -185,16 +221,10 @@ public class MakeFragment extends Fragment {
 //        }
 //    }
 //
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-//    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
 //
     @Override
     public void onDetach() {

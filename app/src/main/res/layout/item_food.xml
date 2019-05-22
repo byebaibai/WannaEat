@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
+    android:gravity="center_vertical"
     android:padding="@dimen/dp6">
 
     <ImageView
         android:id="@+id/image_food_item"
-        android:layout_width="@dimen/dp50"
-        android:layout_height="@dimen/dp50"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:contentDescription="@string/name_food_image"
         android:scaleType="fitXY"
         android:src="@drawable/pic" />
@@ -17,9 +18,25 @@
         android:id="@+id/text_food_item"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/dp50"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="1dp"
         android:layout_toRightOf="@+id/image_food_item"
         android:gravity="center_vertical"
-        android:paddingLeft="@dimen/dp6"
+        android:paddingLeft="@dimen/dp12"
         android:text="大碗牛肉"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_food_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:text="TextView"
+        android:textColor="#FF5722"
+        android:textSize="20sp" />
 </RelativeLayout>

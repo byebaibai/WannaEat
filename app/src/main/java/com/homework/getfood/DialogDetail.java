@@ -36,9 +36,11 @@ public class DialogDetail extends Dialog {
     private boolean canSpicy;
     private Integer foodNum = 1;
     private String yesStr, noStr;
+    private int imageID;
 
-    public DialogDetail(Context context) {
+    public DialogDetail(Context context,int imageId) {
         super(context, R.style.DetailDialog);
+        imageID = imageId;
     }
 
     @Override
@@ -75,6 +77,8 @@ public class DialogDetail extends Dialog {
         }else{
             canSpicyButtonGroup.setVisibility(View.VISIBLE);
         }
+
+        foodImage.setImageResource(imageID);
     }
 
     private void initEvent(){

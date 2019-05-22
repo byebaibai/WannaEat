@@ -22,7 +22,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="大片牛肉🐂"
             android:textColor="#38ADFF"
@@ -75,14 +75,14 @@
 
         <ImageView
             android:id="@+id/foodImage"
-            android:layout_width="84dp"
-            android:layout_height="84dp"
+            android:layout_width="118dp"
+            android:layout_height="118dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="55dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginTop="38dp"
             tools:srcCompat="@drawable/pic" />
 
         <android.support.constraint.ConstraintLayout

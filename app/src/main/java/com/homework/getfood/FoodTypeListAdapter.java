@@ -10,12 +10,14 @@ import android.widget.TextView;
 
 import com.homework.getfood.R;
 
+import java.util.ArrayList;
+
 public class FoodTypeListAdapter extends BaseAdapter {
-    private String[] leftStr;
-    boolean[] flagArray;
+    private ArrayList<String> leftStr;
+    ArrayList<Boolean> flagArray;
     private Context context;
 
-    public FoodTypeListAdapter(Context context, String[] leftStr, boolean[] flagArray) {
+    public FoodTypeListAdapter(Context context, ArrayList<String> leftStr, ArrayList<Boolean> flagArray) {
         this.leftStr = leftStr;
         this.context = context;
         this.flagArray = flagArray;
@@ -23,12 +25,12 @@ public class FoodTypeListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return leftStr.length;
+        return leftStr.size();
     }
 
     @Override
     public Object getItem(int arg0) {
-        return leftStr[arg0];
+        return leftStr.get(arg0);
     }
 
     @Override
@@ -55,8 +57,8 @@ public class FoodTypeListAdapter extends BaseAdapter {
         private TextView left_list_item;
 
         public void updataView(final int position) {
-            left_list_item.setText(leftStr[position]);
-            if (flagArray[position]) {
+            left_list_item.setText(leftStr.get(position));
+            if (flagArray.get(position)) {
                 left_list_item.setBackgroundColor(Color.rgb(255, 255, 255));
             } else {
                 left_list_item.setBackgroundColor(Color.TRANSPARENT);
