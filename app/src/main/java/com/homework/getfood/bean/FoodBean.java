@@ -3,6 +3,7 @@ package com.homework.getfood.bean;
 
 import android.app.Application;
 import android.content.Context;
+import android.provider.ContactsContract;
 
 import com.homework.getfood.R;
 
@@ -29,7 +30,7 @@ public class FoodBean extends Application implements Serializable {
 	private int icon;//图片
 	private int typeID;
 	private long selectCount;
-
+	private int cartNum;
 	public FoodBean(){
 
 	}
@@ -38,12 +39,28 @@ public class FoodBean extends Application implements Serializable {
 		super.onCreate();
 	}
 	public FoodBean(String ID, String name, String price, String type, String typeID, int imageID){
+		cartNum = 0;
 		id = Integer.parseInt(ID);
 		this.name = name;
 		this.price = Integer.parseInt(price);
 		this.type = type;
 		this.typeID = Integer.parseInt(typeID);
 		icon = imageID;
+	}
+	public FoodBean(String name,Integer price, int imageID, int cartNum){
+		this.name = name;
+		icon = imageID;
+		this.cartNum = cartNum;
+		this.price = price;
+ 	}
+	public Integer getCartNum(){
+		return cartNum;
+	}
+ 	public void updateCartNum(int t){
+		cartNum += t;
+	}
+	public void setCartNum(int num){
+		cartNum = num;
 	}
 	public long getSelectCount() {
 		return selectCount;
@@ -77,14 +94,6 @@ public class FoodBean extends Application implements Serializable {
 		this.name = name;
 	}
 
-	public String getIsCommand() {
-		return isCommand;
-	}
-
-	public void setIsCommand(String isCommand) {
-		this.isCommand = isCommand;
-	}
-
 	public Integer getPrice() {
 		return price;
 	}
@@ -99,20 +108,9 @@ public class FoodBean extends Application implements Serializable {
 		this.price = price;
 	}
 
-	public String getCut() {
-		return cut;
-	}
-
-	public void setCut(String cut) {
-		this.cut = cut;
-	}
-
 	public String getType() {
 		return type;
 	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
 
 }

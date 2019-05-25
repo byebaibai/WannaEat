@@ -71,7 +71,8 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/order_price"
         android:layout_alignTop="@+id/order_time"
-        android:text="订单编号 ：" />
+        android:text="订单编号 ："
+        android:layout_alignLeft="@+id/order_price" />
 
     <Button
         android:id="@+id/button_detail"
@@ -88,16 +89,5 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#03A9F4"
         android:textSize="@dimen/sp_12" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_detail"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="false"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="-3dp"
-        app:srcCompat="@drawable/line" />
 
 </RelativeLayout>

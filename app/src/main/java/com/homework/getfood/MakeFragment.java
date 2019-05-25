@@ -1,30 +1,34 @@
 package com.homework.getfood;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
-import butterknife.ButterKnife;
-import com.homework.getfood.FoodTypeListAdapter;
-import com.homework.getfood.FoodListAdapter;
-import com.homework.getfood.R;
-import com.homework.getfood.PinnedHeaderListView;
 import com.homework.getfood.bean.FoodBean;
 import com.homework.getfood.context.AppContext;
-
+import com.homework.getfood.util.CartAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 ///**
@@ -35,7 +39,7 @@ import butterknife.BindView;
 // * Use the {@link MakeFragment#newInstance} factory method to
 // * create an instance of this fragment.
 // */
-public class MakeFragment extends Fragment {
+public class MakeFragment extends Fragment implements View.OnClickListener, CartListener, UpdateListener {
 
     @BindView(R.id.view_type_list)
     ListView foodtypeListView;
@@ -49,37 +53,26 @@ public class MakeFragment extends Fragment {
     private ArrayList<String> leftStr;
     private ArrayList<Boolean> flagArray;
     private ArrayList<ArrayList<String>> rightStr;
-    private ArrayList<String> temp;
     private View rootView;
 
-    private AppContext globalFood;
-    private ArrayList<FoodBean> foodData = new ArrayList<FoodBean>();
     private HashMap<String,FoodBean> foodMap;
+    private HashMap<String,FoodBean> cartMap;
     private int typeNum;
-//    private OnFragmentInteractionListener mListener;
-//
-//    public MakeFragment() {
-//        // Required empty public constructor
-//    }
-//
-//    /**
-//     * Use this factory method to create a new instance of
-//     * this fragment using the provided parameters.
-//     *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
-//     * @return A new instance of fragment MakeFragment.
-//     */
-//    // TODO: Rename and change types and number of parameters
-//    public static MakeFragment newInstance(String param1, String param2) {
-//        MakeFragment fragment = new MakeFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-//
+    private ImageView shopping_cart;
+    private TextView defaultText;
+    private ListView shoppingListView;
+    private FrameLayout cardLayout;
+
+    private LinearLayout cardShopLayout;
+    private View bg_layout;
+    private TextView settlement;
+    private List<FoodBean> productList;
+    private CartAdapter cartAdapter;
+    @SuppressLint("StaticFieldLeak")
+    public static TextView shoppingPrice;
+
+    @SuppressLint("StaticFieldLeak")
+    public static TextView shoppingNum;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,17 +80,17 @@ public class MakeFragment extends Fragment {
 
     }
     private void initData(){
-        foodData = globalFood.getData();
-        foodMap = globalFood.getMap();
+        ArrayList<FoodBean> foodData = AppContext.getData();
+        foodMap = AppContext.getMap();
         leftStr = new ArrayList<String>();
         rightStr = new ArrayList<ArrayList<String>>();
         flagArray = new ArrayList<Boolean>();
         boolean Flag = true;
-        for (int i = 1;i<= globalFood.getTypeNum();i++){
+        for (int i = 1; i<= AppContext.getTypeNum(); i++){
             if (i == 1) flagArray.add(true);
             else flagArray.add(false);
-            temp = new ArrayList<String>();
-            for (int j = 0;j < foodData.size();j++){
+            ArrayList<String> temp = new ArrayList<String>();
+            for (int j = 0; j < foodData.size(); j++){
                 FoodBean x = foodData.get(j);
                 if (x.getTypeID() == i){
                     if(Flag){
@@ -111,20 +104,74 @@ public class MakeFragment extends Fragment {
             rightStr.add(temp);
             Flag = true;
         }
-        for (int i = 0; i<leftStr.size();i++){
-            System.out.println(leftStr.get(i));
+        bg_layout.setOnClickListener(this);
+        settlement.setOnClickListener(this);
+        shopping_cart.setOnClickListener(this);
+    }
+    private void initView(){
+        shopping_cart = (ImageView)rootView.findViewById(R.id.shopping_cart);
+        defaultText = (TextView)rootView.findViewById(R.id.defaultText);
+        shoppingListView = (ListView)rootView.findViewById(R.id.shopproductListView);
+        cardLayout = (FrameLayout)rootView.findViewById(R.id.cardLayout);
+        cardShopLayout = (LinearLayout)rootView.findViewById(R.id.cardShopLayout);
+        bg_layout =  (View) rootView.findViewById(R.id.bg_layout);
+        settlement = (TextView)  rootView.findViewById(R.id.settlement);
+        shoppingPrice = (TextView) rootView.findViewById(R.id.shoppingPrice);
+        shoppingNum = (TextView) rootView.findViewById(R.id.shoppingNum);
+        initData();
+    }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.shopping_cart:
+                if (AppContext.getCart().isEmpty() || AppContext.getCart() == null) {
+                    defaultText.setVisibility(View.VISIBLE);
+                } else {
+                    defaultText.setVisibility(View.GONE);
+                }
+
+                if (cardLayout.getVisibility() == View.GONE) {
+                    cardLayout.setVisibility(View.VISIBLE);
+                    cardShopLayout.setVisibility(View.VISIBLE);
+                    bg_layout.setVisibility(View.VISIBLE);
+
+                } else {
+                    cardLayout.setVisibility(View.GONE);
+                    bg_layout.setVisibility(View.GONE);
+                    cardShopLayout.setVisibility(View.GONE);
+                }
+                break;
+
+            case R.id.settlement:
+                System.out.println("Ah Buy!");
+                if(AppContext.getCart().isEmpty() || AppContext.getCart() == null){
+                    return;
+                }
+                break;
+            case R.id.bg_layout:
+                cardLayout.setVisibility(View.GONE);
+                bg_layout.setVisibility(View.GONE);
+                cardShopLayout.setVisibility(View.GONE);
+                break;
         }
+    }
+    @Override
+    public void updateFood() {
+        cartAdapter.updateData();
+        cartAdapter.notifyDataSetChanged();
+        //setPrice();
     }
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        initData();
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_make, container, false);
-        pinnedListView = (PinnedHeaderListView) rootView.findViewById(R.id.view_pinned_list);
+        initView();
+        pinnedListView = rootView.findViewById(R.id.view_pinned_list);
         ButterKnife.bind(this, rootView);
         final FoodListAdapter sectionedAdapter = new FoodListAdapter(rootView.getContext(), leftStr, rightStr, foodMap);
+        sectionedAdapter.setCallBackListener(this);
         pinnedListView.setAdapter(sectionedAdapter);
         adapter = new FoodTypeListAdapter(rootView.getContext(), leftStr, flagArray);
         foodtypeListView.setAdapter(adapter);
@@ -148,24 +195,23 @@ public class MakeFragment extends Fragment {
                 pinnedListView.setSelection(rightSection);
             }
         });
+        cartAdapter = new CartAdapter(getActivity(),AppContext.getCart());
+        shoppingListView.setAdapter(cartAdapter);
+        cartAdapter.setCartListener(this);
 
         pinnedListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
-                switch (scrollState) {
-                    // 当不滚动时
-                    case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
-                        // 判断滚动到底部
-                        if (pinnedListView.getLastVisiblePosition() == (pinnedListView.getCount() - 1)) {
-                            foodtypeListView.setSelection(ListView.FOCUS_DOWN);
-                        }
+                // 当不滚动时
+                if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {// 判断滚动到底部
+                    if (pinnedListView.getLastVisiblePosition() == (pinnedListView.getCount() - 1)) {
+                        foodtypeListView.setSelection(ListView.FOCUS_DOWN);
+                    }
 
-                        // 判断滚动到顶部
-                        if (pinnedListView.getFirstVisiblePosition() == 0) {
-                            foodtypeListView.setSelection(0);
-                        }
-
-                        break;
+                    // 判断滚动到顶部
+                    if (pinnedListView.getFirstVisiblePosition() == 0) {
+                        foodtypeListView.setSelection(0);
+                    }
                 }
             }
 
@@ -188,11 +234,9 @@ public class MakeFragment extends Fragment {
                         adapter.notifyDataSetChanged();
                         y = x;
                         if (y == foodtypeListView.getLastVisiblePosition()) {
-//                            z = z + 3;
                             foodtypeListView.setSelection(z);
                         }
                         if (x == foodtypeListView.getFirstVisiblePosition()) {
-//                            z = z - 1;
                             foodtypeListView.setSelection(z);
                         }
                         if (firstVisibleItem + visibleItemCount == totalItemCount - 1) {
@@ -208,19 +252,18 @@ public class MakeFragment extends Fragment {
     }
 
     @Override
+    public void onRemoveFood(FoodBean product) {
+
+        AppContext.getCart().remove(product.getName());
+        updateFood();
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        globalFood = (AppContext) getActivity().getApplication();
         //textView = (TextView)getActivity().findViewById(R.id.fragment_make_id);
     }
 
-//    // TODO: Rename method, update argument and hook method into UI event
-//    public void onButtonPressed(Uri uri) {
-//        if (mListener != null) {
-//            mListener.onFragmentInteraction(uri);
-//        }
-//    }
-//
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -232,19 +275,27 @@ public class MakeFragment extends Fragment {
         //mListener = null;
         ButterKnife.bind(this, rootView);
     }
-//
-//    /**
-//     * This interface must be implemented by activities that contain this
-//     * fragment to allow an interaction in this fragment to be communicated
-//     * to the activity and potentially other fragments contained in that
-//     * activity.
-//     * <p>
-//     * See the Android Training lesson <a href=
-//     * "http://developer.android.com/training/basics/fragments/communicating.html"
-//     * >Communicating with Other Fragments</a> for more information.
-//     */
-//    public interface OnFragmentInteractionListener {
-//        // TODO: Update argument type and name
-//        void onFragmentInteraction(Uri uri);
-//    }
+
+    @SuppressLint("SetTextI18n")
+    static public void setPrice() {
+        Integer priceSum = 0, foodSum = 0;
+        HashMap<String, FoodBean> cart = AppContext.getCart();
+        for (FoodBean item : cart.values()){
+            foodSum = foodSum + item.getCartNum();
+            priceSum = priceSum + item.getCartNum() * item.getPrice();
+        }
+
+        if (foodSum > 0){
+            shoppingNum.setVisibility(View.VISIBLE);
+        }else{
+            shoppingNum.setVisibility(View.GONE);
+        }
+        if (priceSum > 0){
+            shoppingPrice.setVisibility(View.VISIBLE);
+        }else{
+            shoppingPrice.setVisibility(View.GONE);
+        }
+        shoppingPrice.setText(priceSum.toString() + "  ¥");
+        shoppingNum.setText(foodSum.toString());
+    }
 }

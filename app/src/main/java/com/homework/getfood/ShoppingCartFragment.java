@@ -21,9 +21,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.homework.getfood.bean.FoodBean;
+import com.homework.getfood.context.AppContext;
 
 import org.w3c.dom.Text;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class ShoppingCartFragment extends Fragment implements View.OnClickListener {
@@ -44,14 +46,24 @@ public class ShoppingCartFragment extends Fragment implements View.OnClickListen
     private RelativeLayout parentLayout;
     private TextView noData;
     private ListView shoppingListView;
+
+    private HashMap<String, FoodBean> cart = new HashMap<String, FoodBean>();
     @Override
     public void onClick(View v) {
-
+        for (FoodBean fb : cart.values()){
+            System.out.println("Name : " + fb.getName() + "  price : " + fb.getPrice().toString() +
+                    " cartNum : " + fb.getCartNum().toString());
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        cart = AppContext.getCart();
+        for (FoodBean fb : cart.values()){
+            System.out.println("Name : " + fb.getName() + "  price : " + fb.getPrice().toString() +
+                    " cartNum : " + fb.getCartNum().toString());
+        }
         return inflater
                 .inflate(R.layout.fragment_make, container, false);
     }

@@ -1,7 +1,7 @@
 package com.homework.getfood;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,12 +12,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.homework.getfood.R;
 import com.homework.getfood.bean.FoodBean;
 import com.homework.getfood.context.AppContext;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import butterknife.BindView;
 
 public class FoodListAdapter extends SectionedBaseAdapter {
 
@@ -25,12 +26,20 @@ public class FoodListAdapter extends SectionedBaseAdapter {
     private ArrayList<String> leftStr;
     private ArrayList<ArrayList<String>> rightStr;
     private HashMap<String,FoodBean> foodMap;
+    private HashMap<String,FoodBean> cartMap;
     private DialogDetail dialogDetail;
+
+    private UpdateListener callBackListener;
+
+    public void setCallBackListener(UpdateListener callBackListener) {
+        this.callBackListener = callBackListener;
+    }
     public FoodListAdapter(Context context, ArrayList<String> leftStr, ArrayList<ArrayList<String>> rightStr, HashMap<String,FoodBean> foodmap) {
         this.foodMap = foodmap;
         this.mContext = context;
         this.leftStr = leftStr;
         this.rightStr = rightStr;
+        cartMap = AppContext.getCart();
     }
 
     @Override
@@ -83,7 +92,20 @@ public class FoodListAdapter extends SectionedBaseAdapter {
                     public void onYesClick() {
                         Integer num = dialogDetail.getInfo();
                         Toast.makeText(context,"点击了--确定--按钮 : " + num.toString(),Toast.LENGTH_LONG).show();
+                        FoodBean newItem = new FoodBean(fb.getName(),fb.getPrice(),fb.getIcon(),num);
+                        if (!cartMap.containsKey(newItem.getName()))cartMap.put(newItem.getName(),newItem);
+                        else{
+                            FoodBean temp = cartMap.get(newItem.getName());
+                            assert temp != null;
+                            temp.updateCartNum(num);
+                            cartMap.replace(newItem.getName(),temp);
+                        }
+                        if (callBackListener != null) {
+                            callBackListener.updateFood();
+                        } else {
+                        }
                         dialogDetail.dismiss();
+                        setPrice();
                     }
                 });
                 dialogDetail.setNoOnclickListener("取消", new DialogDetail.onNoOnclickListener() {
@@ -114,4 +136,26 @@ public class FoodListAdapter extends SectionedBaseAdapter {
         return layout;
     }
 
+    @SuppressLint("SetTextI18n")
+    private void setPrice() {
+        Integer priceSum = 0, foodSum = 0;
+        HashMap<String, FoodBean> cart = AppContext.getCart();
+        for (FoodBean item : cart.values()){
+            foodSum = foodSum + item.getCartNum();
+            priceSum = priceSum + item.getCartNum() * item.getPrice();
+        }
+
+        if (foodSum > 0){
+            MakeFragment.shoppingNum.setVisibility(View.VISIBLE);
+        }else{
+            MakeFragment.shoppingNum.setVisibility(View.GONE);
+        }
+        if (priceSum > 0){
+            MakeFragment.shoppingPrice.setVisibility(View.VISIBLE);
+        }else{
+            MakeFragment.shoppingPrice.setVisibility(View.GONE);
+        }
+        MakeFragment.shoppingPrice.setText(priceSum.toString() + "  ¥");
+        MakeFragment.shoppingNum.setText(foodSum.toString());
+    }
 }

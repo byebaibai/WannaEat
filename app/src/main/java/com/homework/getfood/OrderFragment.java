@@ -10,6 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.homework.getfood.bean.FoodBean;
+import com.homework.getfood.context.AppContext;
+
+import java.util.HashMap;
+
 
 ///**
 // * A simple {@link Fragment} subclass.
@@ -29,6 +34,8 @@ public class OrderFragment extends Fragment {
 //    private String mParam1;
 //    private String mParam2;
     private TextView textView;
+
+    private HashMap<String,FoodBean> cartMap = new HashMap<String,FoodBean>();
     //private OnFragmentInteractionListener mListener;
 //
 //    public OrderFragment() {
@@ -66,7 +73,10 @@ public class OrderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        cartMap = AppContext.getCart();
+
         return inflater.inflate(R.layout.fragment_order, container, false);
+
     }
 
     @Override

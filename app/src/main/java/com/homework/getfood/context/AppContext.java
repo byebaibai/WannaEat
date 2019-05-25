@@ -16,6 +16,7 @@ import java.util.HashMap;
 public class AppContext extends Application {
     private static ArrayList<FoodBean> foodData = new ArrayList<FoodBean>();
     private static HashMap<String, FoodBean> foodMap = new HashMap<String, FoodBean>();
+    private static HashMap<String, FoodBean> cartMap = new HashMap<String, FoodBean>();
     private static int typeNum;
 
     private static AppContext mInstance;
@@ -35,16 +36,18 @@ public class AppContext extends Application {
         return foodData;
     }
 
+    public static HashMap<String, FoodBean> getCart(){
+        return cartMap;
+    }
+    public static void setCart(HashMap<String, FoodBean> cmap){
+        cartMap = cmap;
+    }
     public static HashMap<String, FoodBean> getMap() {
         return foodMap;
     }
 
     public static int getTypeNum() {
         return typeNum;
-    }
-
-    public void addFood(FoodBean fb) {
-
     }
 
     private void initData() {
