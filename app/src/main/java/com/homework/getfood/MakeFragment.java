@@ -9,8 +9,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
@@ -21,7 +19,6 @@ import android.widget.TextView;
 
 import com.homework.getfood.bean.FoodBean;
 import com.homework.getfood.context.AppContext;
-import com.homework.getfood.util.CartAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

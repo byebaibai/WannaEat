@@ -91,6 +91,7 @@ public class FoodListAdapter extends SectionedBaseAdapter {
                     @Override
                     public void onYesClick() {
                         Integer num = dialogDetail.getInfo();
+                        if (num == 0) num ++;
                         Toast.makeText(context,"点击了--确定--按钮 : " + num.toString(),Toast.LENGTH_LONG).show();
                         FoodBean newItem = new FoodBean(fb.getName(),fb.getPrice(),fb.getIcon(),num);
                         if (!cartMap.containsKey(newItem.getName()))cartMap.put(newItem.getName(),newItem);

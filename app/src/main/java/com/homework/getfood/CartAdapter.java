@@ -1,4 +1,4 @@
-package com.homework.getfood.util;
+package com.homework.getfood;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
