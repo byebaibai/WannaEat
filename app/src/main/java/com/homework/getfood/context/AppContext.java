@@ -2,21 +2,29 @@ package com.homework.getfood.context;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.content.res.XmlResourceParser;
 
+import com.alibaba.fastjson.JSON;
 import com.homework.getfood.R;
 import com.homework.getfood.bean.FoodBean;
+import com.homework.getfood.bean.OrderBean;
+import com.homework.getfood.util.JsonUtils;
 
 import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class AppContext extends Application {
     private static ArrayList<FoodBean> foodData = new ArrayList<FoodBean>();
     private static HashMap<String, FoodBean> foodMap = new HashMap<String, FoodBean>();
     private static HashMap<String, FoodBean> cartMap = new HashMap<String, FoodBean>();
+    private static ArrayList<OrderBean> orderBeanArrayList = new ArrayList<OrderBean>();
     private static int typeNum;
 
     private static AppContext mInstance;
@@ -30,6 +38,10 @@ public class AppContext extends Application {
         super.onCreate();
         mInstance = this;
         initData();
+    }
+
+    public static ArrayList<OrderBean> getOrderBeanArrayList() {
+        return orderBeanArrayList;
     }
 
     public static ArrayList<FoodBean> getData() {
@@ -52,7 +64,6 @@ public class AppContext extends Application {
 
     private void initData() {
         XmlResourceParser xrp = getResources().getXml(R.xml.food);
-        Context ctx = getBaseContext();
         try {
             //还没有到XML文档的结尾处
             while (xrp.getEventType() != XmlResourceParser.END_DOCUMENT) {
@@ -68,8 +79,7 @@ public class AppContext extends Application {
                         String price = xrp.getAttributeValue(null, "price");
                         String imageURL = xrp.getAttributeValue(null, "imageURL");
                         String foodName = xrp.nextText();
-                        int imageUrl = getResources().getIdentifier(imageURL, "drawable", ctx.getPackageName());
-                        FoodBean fb = new FoodBean(foodID, foodName, price, foodType, foodTypeID, imageUrl);
+                        FoodBean fb = new FoodBean(foodID, foodName, price, foodType, foodTypeID, imageURL);
                         foodData.add(fb);
                         foodMap.put(fb.getName(), fb);
                         if(fb.getTypeID() > typeNum) typeNum = fb.getTypeID();
@@ -83,5 +93,29 @@ public class AppContext extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String order = getJson("OrderData.json");
+        List<OrderBean> ob = JSON.parseArray(order,OrderBean.class);
+        orderBeanArrayList = new ArrayList<OrderBean>(ob);
+        System.out.println(orderBeanArrayList.size());
     }
+
+    private String getJson(String fileName){
+        StringBuilder stringBuilder = new StringBuilder();
+        //获得assets资源管理器
+        AssetManager assetManager = getAssets();
+        //使用IO流读取json文件内容
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
+                    assetManager.open(fileName),"utf-8"));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return stringBuilder.toString();
+    }
+
+
 }

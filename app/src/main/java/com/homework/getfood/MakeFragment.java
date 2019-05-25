@@ -17,8 +17,11 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.homework.getfood.bean.FoodBean;
+import com.homework.getfood.bean.OrderBean;
 import com.homework.getfood.context.AppContext;
+import com.homework.getfood.util.JsonUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -143,6 +146,16 @@ public class MakeFragment extends Fragment implements View.OnClickListener, Cart
                 System.out.println("Ah Buy!");
                 if(AppContext.getCart().isEmpty() || AppContext.getCart() == null){
                     return;
+                }else{
+                    ArrayList<FoodBean> fb = new ArrayList<FoodBean>();
+                    fb.addAll(AppContext.getCart().values());
+                    OrderBean order = new OrderBean(6232,"2019-05-18 21:11",
+                            424,-1,fb);
+                    String s = JsonUtils.parseObjToJson(order);
+                    System.out.println(s);
+                    OrderBean temp = JsonUtils.parseJsonToObj(s,OrderBean.class);
+                    String t = JsonUtils.parseObjToJson(temp);
+                    System.out.println(t);
                 }
                 break;
             case R.id.bg_layout:

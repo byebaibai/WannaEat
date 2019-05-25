@@ -2,6 +2,7 @@ package com.homework.getfood;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private OrderFragment fragment_order;
     private Fragment[] fragments;
     private TabLayout mTabLayout;
-    private ViewPager mViewPager;
+    static private ViewPager mViewPager;
     private MainFragmentPagerAdapter FragmentPagerAdapter;
     private AppContext globalFood = (AppContext) getApplication();
     private TabLayout.Tab makeOrder;
@@ -51,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         initViews();
 
     }
-
     private void initViews(){
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         FragmentPagerAdapter = new MainFragmentPagerAdapter(getSupportFragmentManager());
@@ -65,4 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public static void setViewPagerID(int id){
+        mViewPager.setCurrentItem(id);
+    }
 }

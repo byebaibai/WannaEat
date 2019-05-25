@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.homework.getfood.bean.FoodBean;
 import com.homework.getfood.context.AppContext;
+import com.homework.getfood.util.IconFetcher;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -74,18 +75,17 @@ public class FoodListAdapter extends SectionedBaseAdapter {
         }
         String name = rightStr.get(section).get(position);
         final FoodBean fb = foodMap.get(name);
-
+        final int iconID = IconFetcher.getResId(fb.getIcon(),R.drawable.class);
         ((TextView) layout.findViewById(R.id.text_food_item)).setText(rightStr.get(section).get(position));
         ((TextView) layout.findViewById(R.id.text_food_value)).setText(fb.getPrice().toString() + "¥");
-        ((ImageView) layout.findViewById(R.id.image_food_item)).setImageResource(fb.getIcon());
+        ((ImageView) layout.findViewById(R.id.image_food_item)).setImageResource(iconID);
         //System.out.println(fb.getIcon());
         layout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 final Context context = arg0.getContext();
-                dialogDetail = new DialogDetail(arg0.getContext(),fb.getIcon());
+                dialogDetail = new DialogDetail(arg0.getContext(),iconID);
                 System.out.println(fb.getIcon());
-
                 dialogDetail.setInfo(fb.getName(),fb.getPrice().toString(),false);
                 dialogDetail.setYesOnclickListener("确定", new DialogDetail.onYesOnclickListener() {
                     @Override
@@ -93,7 +93,7 @@ public class FoodListAdapter extends SectionedBaseAdapter {
                         Integer num = dialogDetail.getInfo();
                         if (num == 0) num ++;
                         Toast.makeText(context,"点击了--确定--按钮 : " + num.toString(),Toast.LENGTH_LONG).show();
-                        FoodBean newItem = new FoodBean(fb.getName(),fb.getPrice(),fb.getIcon(),num);
+                        FoodBean newItem = new FoodBean(fb.getId(),fb.getTypeID(),fb.getType(),fb.getName(),fb.getPrice(),fb.getIcon(),num);
                         if (!cartMap.containsKey(newItem.getName()))cartMap.put(newItem.getName(),newItem);
                         else{
                             FoodBean temp = cartMap.get(newItem.getName());
