@@ -16,7 +16,7 @@
         app:tabSelectedTextColor="@color/colorTabSelected"
         app:tabInlineLabel="true"/>
 
-    <android.support.v4.view.ViewPager
+    <com.homework.getfood.util.NoScrollViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"

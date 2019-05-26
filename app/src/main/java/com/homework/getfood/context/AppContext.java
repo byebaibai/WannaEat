@@ -14,21 +14,26 @@ import com.homework.getfood.util.JsonUtils;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+import android.util.Log;
+import java.io.FileWriter;
 public class AppContext extends Application {
     private static ArrayList<FoodBean> foodData = new ArrayList<FoodBean>();
     private static HashMap<String, FoodBean> foodMap = new HashMap<String, FoodBean>();
     private static HashMap<String, FoodBean> cartMap = new HashMap<String, FoodBean>();
     private static ArrayList<OrderBean> orderBeanArrayList = new ArrayList<OrderBean>();
     private static int typeNum;
-
+    private static String JsonString;
     private static AppContext mInstance;
-
+    private static String packageName;
     public static AppContext getContext() {
         return mInstance;
     }
@@ -36,6 +41,7 @@ public class AppContext extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        packageName = getApplicationContext().getPackageName();
         mInstance = this;
         initData();
     }
@@ -93,29 +99,62 @@ public class AppContext extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String order = getJson("OrderData.json");
-        List<OrderBean> ob = JSON.parseArray(order,OrderBean.class);
+        JsonString = getJson("OrderData.json");
+        List<OrderBean> ob = JSON.parseArray(JsonString,OrderBean.class);
         orderBeanArrayList = new ArrayList<OrderBean>(ob);
         System.out.println(orderBeanArrayList.size());
     }
 
     private String getJson(String fileName){
-        StringBuilder stringBuilder = new StringBuilder();
-        //获得assets资源管理器
-        AssetManager assetManager = getAssets();
-        //使用IO流读取json文件内容
         try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
-                    assetManager.open(fileName),"utf-8"));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                stringBuilder.append(line);
-            }
+            File f = new File("/data/data/" + getPackageName() + "/" + fileName);
+            FileInputStream is = new FileInputStream(f);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            String mResponse = new String(buffer);
+            return mResponse;
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return "[]";
+        }
+    }
+    public static void updateOrder(OrderBean ob){
+        String s = JsonUtils.parseObjToJson(ob);
+        orderBeanArrayList.add(ob);
+//        System.out.println(JsonString);
+        if(orderBeanArrayList.size() == 0){
+            JsonString = "[" + s +  "]";
+        }else {
+            int last = JsonString.lastIndexOf("]");
+            JsonString = JsonString.substring(0, last) + "," + s + "]";
+        }
+//        System.out.println(JsonString);
+//        List<OrderBean> obList = JSON.parseArray(JsonString,OrderBean.class);
+//        orderBeanArrayList = new ArrayList<OrderBean>(obList);
+//        System.out.println(orderBeanArrayList.size());
+//        System.out.println(s);
+        try {
+            FileWriter file = new FileWriter("/data/data/" +  packageName + "/" + "OrderData.json");
+            file.write(JsonString);
+            file.flush();
+            file.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return stringBuilder.toString();
     }
-
-
+    public static void updateRemove(){
+        String s = JSON.toJSONString(orderBeanArrayList);
+        JsonString = s;
+        try {
+            FileWriter file = new FileWriter("/data/data/" +  packageName + "/" + "OrderData.json");
+            file.write(JsonString);
+            file.flush();
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

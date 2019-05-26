@@ -2,6 +2,7 @@ package com.homework.getfood;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,6 +23,7 @@ import com.homework.getfood.bean.FoodBean;
 import com.homework.getfood.bean.OrderBean;
 import com.homework.getfood.context.AppContext;
 import com.homework.getfood.util.JsonUtils;
+import com.homework.getfood.util.TimeFetcher;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -149,13 +151,14 @@ public class MakeFragment extends Fragment implements View.OnClickListener, Cart
                 }else{
                     ArrayList<FoodBean> fb = new ArrayList<FoodBean>();
                     fb.addAll(AppContext.getCart().values());
-                    OrderBean order = new OrderBean(6232,"2019-05-18 21:11",
-                            424,-1,fb);
-                    String s = JsonUtils.parseObjToJson(order);
-                    System.out.println(s);
-                    OrderBean temp = JsonUtils.parseJsonToObj(s,OrderBean.class);
-                    String t = JsonUtils.parseObjToJson(temp);
-                    System.out.println(t);
+                    int num = (int) ((Math.random() * 9 + 1) * 1000);
+                    String s = shoppingPrice.getText().toString();
+                    Integer price = Integer.parseInt(getPrice());
+                    OrderBean order = new OrderBean(num, TimeFetcher.getTime(),
+                            price,-1,fb);
+                    CheckActivity.setOrderData(order);
+                    Intent intent=new Intent(getActivity(),CheckActivity.class);
+                    startActivity(intent);
                 }
                 break;
             case R.id.bg_layout:
@@ -307,5 +310,14 @@ public class MakeFragment extends Fragment implements View.OnClickListener, Cart
         }
         shoppingPrice.setText(priceSum.toString() + "  ¥");
         shoppingNum.setText(foodSum.toString());
+    }
+
+    private String getPrice(){
+        Integer priceSum = 0;
+        HashMap<String, FoodBean> cart = AppContext.getCart();
+        for (FoodBean item : cart.values()){
+            priceSum = priceSum + item.getCartNum() * item.getPrice();
+        }
+        return priceSum.toString();
     }
 }

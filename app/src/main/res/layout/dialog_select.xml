@@ -22,17 +22,11 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="7dp"
             android:gravity="center"
             android:text="大片牛肉🐂"
             android:textColor="#38ADFF"
             android:textSize="18sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp0"
-            android:layout_marginTop="15dp"
-            android:background="#E4E4E4" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,29 +74,64 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="19dp"
-            android:layout_marginLeft="19dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="38dp"
             tools:srcCompat="@drawable/pic" />
 
-        <EditText
-            android:id="@+id/foodNum"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="120dp"
-            android:layout_marginEnd="42dp"
-            android:ems="10"
-            android:foregroundGravity="center_vertical|center|center_horizontal"
-            android:gravity="clip_horizontal|center|center_horizontal|center_vertical"
-            android:inputType="numberDecimal"
-            android:maxLength="3"
-            android:numeric="integer"
-            android:phoneNumber="true"
-            android:saveEnabled="false"
-            android:selectAllOnFocus="false"
-            android:text="1"
-            android:textSize="17sp" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="UnknownId">
+
+            <ImageButton
+                android:id="@+id/addButton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="137dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#FDFFFFFF"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/add" />
+
+            <TextView
+                android:id="@+id/foodNum"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="25dp"
+                android:layout_marginTop="137dp"
+                android:layout_marginEnd="8dp"
+                android:background="@null"
+                android:ems="10"
+                android:foregroundGravity="center_vertical|center|center_horizontal"
+                android:gravity="clip_horizontal|center|center_horizontal|center_vertical"
+                android:inputType="numberDecimal"
+                android:maxLength="3"
+                android:numeric="integer"
+                android:phoneNumber="true"
+                android:saveEnabled="false"
+                android:selectAllOnFocus="false"
+                android:singleLine="true"
+                android:text="1"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toStartOf="@+id/addButton"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/minusButton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="137dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:background="#00FFFFFF"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toStartOf="@+id/foodNum"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/minus" />
+        </android.support.constraint.ConstraintLayout>
 
         <RadioGroup
             android:id="@+id/canSpicyGroup"
@@ -151,27 +180,16 @@
             android:id="@+id/foodPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="144dp"
-            android:layout_marginRight="164dp"
-            android:layout_marginBottom="63dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="false"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="137dp"
+            android:layout_toEndOf="@+id/foodImage"
             android:text="20¥"
             android:textColor="#475EDB"
-            android:textSize="17sp"
-            app:fontFamily="sans-serif" />
-
-        <TextView
-            android:id="@+id/number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="23dp"
-            android:layout_marginBottom="65dp"
-            android:text="份"
-            android:textSize="18sp" />
+            android:textSize="20sp"
+            app:fontFamily="sans-serif"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </RelativeLayout>
 

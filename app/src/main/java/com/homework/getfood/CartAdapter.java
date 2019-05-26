@@ -85,7 +85,8 @@ public class CartAdapter extends BaseAdapter {
                 num++;
                 foodList.get(position).setCartNum(num);
                 viewHolder.shoppingNum.setText(foodList.get(position).getCartNum()+"");
-                AppContext.getCart().replace(food.getName(),food);
+                AppContext.getCart().remove(food.getName());
+                AppContext.getCart().put(food.getName(),food);
                 updateData();
             }
         });
@@ -103,7 +104,8 @@ public class CartAdapter extends BaseAdapter {
                     }else {
                         food.setCartNum(num);
                         viewHolder.shoppingNum.setText(foodList.get(position).getCartNum()+"");
-                        AppContext.getCart().replace(food.getName(),food);
+                        AppContext.getCart().remove(food.getName());
+                        AppContext.getCart().put(food.getName(),food);
                     }
                     updateData();
                 }

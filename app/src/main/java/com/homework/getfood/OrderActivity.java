@@ -8,6 +8,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.homework.getfood.bean.OrderBean;
+import com.homework.getfood.util.StringFetcher;
 
 import java.util.Objects;
 
@@ -46,6 +47,9 @@ public class OrderActivity extends AppCompatActivity {
         buyBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                OrderFragment of = MainActivity.getFragment_order();
+                if (of != null) of.notifyData();
+                else System.out.println("None");
                 Intent intent = new Intent(OrderActivity.this,MainActivity.class);
                 MainActivity.setViewPagerID(0);
                 startActivity(intent);
@@ -54,8 +58,10 @@ public class OrderActivity extends AppCompatActivity {
         orderOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                OrderFragment of = MainActivity.getFragment_order();
+                if (of != null) of.notifyData();
+                else System.out.println("None");
                 Intent intent = new Intent(OrderActivity.this,MainActivity.class);
-                intent.putExtra("page",1);
                 MainActivity.setViewPagerID(1);
                 startActivity(intent);
             }

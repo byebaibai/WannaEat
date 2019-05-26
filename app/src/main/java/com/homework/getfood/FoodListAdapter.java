@@ -92,14 +92,14 @@ public class FoodListAdapter extends SectionedBaseAdapter {
                     public void onYesClick() {
                         Integer num = dialogDetail.getInfo();
                         if (num == 0) num ++;
-                        Toast.makeText(context,"点击了--确定--按钮 : " + num.toString(),Toast.LENGTH_LONG).show();
                         FoodBean newItem = new FoodBean(fb.getId(),fb.getTypeID(),fb.getType(),fb.getName(),fb.getPrice(),fb.getIcon(),num);
                         if (!cartMap.containsKey(newItem.getName()))cartMap.put(newItem.getName(),newItem);
                         else{
                             FoodBean temp = cartMap.get(newItem.getName());
                             assert temp != null;
                             temp.updateCartNum(num);
-                            cartMap.replace(newItem.getName(),temp);
+                            AppContext.getCart().remove(newItem.getName());
+                            AppContext.getCart().put(newItem.getName(),temp);
                         }
                         if (callBackListener != null) {
                             callBackListener.updateFood();
@@ -112,7 +112,6 @@ public class FoodListAdapter extends SectionedBaseAdapter {
                 dialogDetail.setNoOnclickListener("取消", new DialogDetail.onNoOnclickListener() {
                     @Override
                     public void onNoClick() {
-                        Toast.makeText(context,"点击了--取消--按钮",Toast.LENGTH_LONG).show();
                         dialogDetail.dismiss();
                     }
                 });

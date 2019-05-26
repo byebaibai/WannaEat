@@ -22,7 +22,7 @@ public class DialogDetail extends Dialog {
     private TextView foodName;
     private ImageView foodImage;
     private TextView foodPrice;
-    private EditText foodNumEditor;
+    private TextView foodNumber;
     private Integer totalPrice;
     private Integer onePrice;
     private RadioGroup canSpicyButtonGroup;
@@ -32,6 +32,8 @@ public class DialogDetail extends Dialog {
     private onNoOnclickListener noOnclickListener;
     private onYesOnclickListener yesOnclickListener;
     private boolean canSpicy;
+    private ImageButton addButton;
+    private ImageButton minusButton;
     private Integer foodNum = 1;
     private String yesStr, noStr;
     private int imageID;
@@ -58,7 +60,7 @@ public class DialogDetail extends Dialog {
         yesButton = (Button) findViewById(R.id.yes);
         noButton = (Button) findViewById(R.id.no);
 
-        foodNumEditor = (EditText) findViewById(R.id.foodNum);
+        foodNumber = (TextView) findViewById(R.id.foodNum);
 
         foodName = (TextView) findViewById(R.id.foodName);
         foodPrice = (TextView) findViewById(R.id.foodPrice);
@@ -66,6 +68,9 @@ public class DialogDetail extends Dialog {
         foodImage = (ImageView) findViewById(R.id.foodImage);
 
         canSpicyButtonGroup = (RadioGroup) findViewById(R.id.canSpicyGroup);
+
+        addButton = (ImageButton) findViewById(R.id.addButton);
+        minusButton = (ImageButton) findViewById(R.id.minusButton);
 
         if (canSpicy == false){
             canSpicyButtonGroup.setVisibility(View.GONE);
@@ -77,45 +82,6 @@ public class DialogDetail extends Dialog {
     }
 
     private void initEvent(){
-        foodNumEditor.setKeyListener(DigitsKeyListener.getInstance("012346789"));
-
-        foodNumEditor.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                String num = foodNumEditor.getText().toString();
-                Integer n;
-                if(num.length() >= 1) n = Integer.parseInt(num);
-                else n = 1;
-                totalPrice = n * onePrice;
-                foodNum = n;
-                foodPrice.setText(totalPrice.toString() + "¥");
-                foodNumEditor.setText(n.toString());
-                return false;
-            }
-        });
-        foodNumEditor.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String num = foodNumEditor.getText().toString();
-                Integer n;
-                if(num.length() >= 1) n = Integer.parseInt(num);
-                else n = 1;
-                totalPrice = n * onePrice;
-                foodNum = n;
-                foodPrice.setText(totalPrice.toString() + "¥");
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count,
-                                          int after) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
         //设置确定按钮被点击后，向外界提供监听
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +102,38 @@ public class DialogDetail extends Dialog {
                 }
             }
         });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                String num = foodNumber.getText().toString();
+                Integer n;
+                if(num.length() >= 1) n = Integer.parseInt(num);
+                else n = 0;
+                if (n < 1000) n++;
+                totalPrice = n * onePrice;
+                foodNum = n;
+                foodPrice.setText(totalPrice.toString() + "¥");
+                foodNumber.setText(n.toString());
+            }
+        });
+        minusButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                String num = foodNumber.getText().toString();
+                Integer n;
+                if(num.length() >= 1) n = Integer.parseInt(num);
+                else n = 0;
+                if (n > 1) n--;
+                totalPrice = n * onePrice;
+                foodNum = n;
+                foodPrice.setText(totalPrice.toString() + "¥");
+                foodNumber.setText(n.toString());
+            }
+        });
+
     }
     private void initData(){
         if (foodNameStr != null){

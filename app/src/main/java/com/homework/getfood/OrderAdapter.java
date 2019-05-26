@@ -13,7 +13,6 @@ import com.homework.getfood.bean.OrderBean;
 import com.homework.getfood.context.AppContext;
 
 import java.util.ArrayList;
-
 public class OrderAdapter extends BaseAdapter{
     public ArrayList<OrderBean> orderList;
     private LayoutInflater mInflater;
@@ -42,6 +41,7 @@ public class OrderAdapter extends BaseAdapter{
     @SuppressLint("SetTextI18n")
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+        this.notifyDataSetChanged();
         final ViewHolder viewHolder;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.item_order,null);

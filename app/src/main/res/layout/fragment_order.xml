@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_order_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OrderFragment">
@@ -35,15 +36,10 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
     </android.support.constraint.ConstraintLayout>
 
-    <ListView
+    <com.baoyz.swipemenulistview.SwipeMenuListView
         android:id="@+id/orderListView"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:cacheColorHint="#00000000"
-        android:divider="@color/user_center_divide_line"
-        android:dividerHeight="1px"
-        android:listSelector="#00000000"
-        android:orientation="vertical"
         />
 
 </RelativeLayout>

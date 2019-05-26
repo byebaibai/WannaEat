@@ -23,6 +23,7 @@ public class OrderFoodAdapter extends BaseAdapter {
         mContext = context;
         mInflater = LayoutInflater.from(context);
         foodList = list;
+        System.out.println(foodList.size());
     }
 
     @Override

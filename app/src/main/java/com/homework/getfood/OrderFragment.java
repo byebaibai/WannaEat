@@ -1,17 +1,24 @@
 package com.homework.getfood;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.homework.getfood.bean.FoodBean;
 import com.homework.getfood.bean.OrderBean;
 import com.homework.getfood.context.AppContext;
@@ -33,7 +40,7 @@ import butterknife.ButterKnife;
 // */
 public class OrderFragment extends Fragment {
     private boolean isScroll = true;
-    private OrderAdapter orderAdapter;
+    public OrderAdapter orderAdapter;
 
     private View rootView;
     private ArrayList<OrderBean> orderBeanArrayList;
@@ -42,7 +49,7 @@ public class OrderFragment extends Fragment {
     ConstraintLayout nothingView;
 
     @BindView(R.id.orderListView)
-    ListView orderListview;
+    SwipeMenuListView orderListview;
 
     @Nullable
     @Override
@@ -51,10 +58,43 @@ public class OrderFragment extends Fragment {
 
         rootView = inflater.inflate(R.layout.fragment_order, container, false);
         ButterKnife.bind(this,rootView);
-        orderAdapter = new OrderAdapter(getActivity());
+        initView();
         refreshView();
-        orderListview.setAdapter(orderAdapter);
+        System.out.println("onCreateView");
+        MainActivity.setFragment_order(this);
         return rootView;
+    }
+    private void initView(){
+        orderAdapter = new OrderAdapter(getActivity());
+        orderListview.setAdapter(orderAdapter);
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
+            @Override
+            public void create(SwipeMenu menu) {
+                // create "delete" item
+                SwipeMenuItem deleteItem = new SwipeMenuItem(
+                        AppContext.getContext());
+                deleteItem.setBackground(new ColorDrawable(Color.rgb(251,
+                        111, 100)));
+                deleteItem.setWidth(dp2px(90));
+                deleteItem.setIcon(R.drawable.garbage);
+                menu.addMenuItem(deleteItem);
+            }
+        };
+        orderListview.setMenuCreator(creator);
+        orderListview.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                if (index == 0) {
+                    System.out.println("Delete");
+                    AppContext.getOrderBeanArrayList().remove(position);
+                    orderAdapter.notifyDataSetChanged();
+                    AppContext.updateRemove();
+                    refreshView();
+                }
+                return false;
+            }
+        });
+        orderListview.setSwipeDirection(SwipeMenuListView.DIRECTION_LEFT);
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,5 +112,20 @@ public class OrderFragment extends Fragment {
             nothingView.setVisibility(View.GONE);
             orderListview.setVisibility(View.VISIBLE);
         }
+    }
+
+    private int dp2px(int value) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value,
+                getResources().getDisplayMetrics());
+    }
+    //另一种将dp转换为px的方法
+    private int dp2px(float value){
+        final float scale = getResources().getDisplayMetrics().density;
+        return (int)(value*scale + 0.5f);
+    }
+
+    public void notifyData() {
+        refreshView();
+        orderAdapter.notifyDataSetChanged();
     }
 }
