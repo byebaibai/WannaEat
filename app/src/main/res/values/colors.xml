@@ -14,4 +14,5 @@
     <color name="shopping_cart_bg">#DC5914</color>
     <color name="consumer_bg">#f3f3f3</color>
     <color name="red">#FF0000</color>
+    <color name="groupSelector">#FE9C94</color>
 </resources>

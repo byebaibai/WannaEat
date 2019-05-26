@@ -84,8 +84,11 @@ public class AppContext extends Application {
                         String foodType = xrp.getAttributeValue(null, "type");
                         String price = xrp.getAttributeValue(null, "price");
                         String imageURL = xrp.getAttributeValue(null, "imageURL");
+                        Integer canspicy = Integer.parseInt(xrp.getAttributeValue(null, "spicy"));
+                        Boolean spicyFlag = false;
+                        if (canspicy == 1) spicyFlag = true;
                         String foodName = xrp.nextText();
-                        FoodBean fb = new FoodBean(foodID, foodName, price, foodType, foodTypeID, imageURL);
+                        FoodBean fb = new FoodBean(foodID, foodName, price, foodType, foodTypeID, imageURL, spicyFlag);
                         foodData.add(fb);
                         foodMap.put(fb.getName(), fb);
                         if(fb.getTypeID() > typeNum) typeNum = fb.getTypeID();

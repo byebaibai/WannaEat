@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         makeOrder = mTabLayout.getTabAt(0).setIcon(ICON[0]);
         listOrder = mTabLayout.getTabAt(1).setIcon(ICON[1]);
         fragment_order = (OrderFragment) this.getSupportFragmentManager().findFragmentById(R.id.fragment_order_id);
+        fragment_make = (MakeFragment) this.getSupportFragmentManager().findFragmentById(R.id.fragment_make_id);
     }
 
     public static void setViewPagerID(int id){
@@ -82,5 +83,11 @@ public class MainActivity extends AppCompatActivity {
 
     public static void setFragment_order(OrderFragment fragment_order) {
         MainActivity.fragment_order = fragment_order;
+    }
+    public static void setFragment_make(MakeFragment fragment_make){
+        MainActivity.fragment_make = fragment_make;
+    }
+    public static MakeFragment getFragment_make(){
+        return fragment_make;
     }
 }

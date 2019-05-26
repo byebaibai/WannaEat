@@ -15,8 +15,14 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.view.View;
+import android.widget.Toast;
+
+import co.ceryle.radiorealbutton.RadioRealButton;
+import co.ceryle.radiorealbutton.RadioRealButtonGroup;
 
 public class DialogDetail extends Dialog {
+    final private static String[] spicyDegreeString = new String[]{"(微辣)","(中辣)", "(猛辣)"};
+    private static int spicyDegreeID = 0;
     private Button yesButton;
     private Button noButton;
     private TextView foodName;
@@ -25,7 +31,10 @@ public class DialogDetail extends Dialog {
     private TextView foodNumber;
     private Integer totalPrice;
     private Integer onePrice;
-    private RadioGroup canSpicyButtonGroup;
+    private RadioRealButtonGroup canSpicyButtonGroup;
+    private RadioRealButton minSpicyBtn = (RadioRealButton) findViewById(R.id.minButton);
+    private RadioRealButton midSpicyBtn = (RadioRealButton) findViewById(R.id.midButton);
+    private RadioRealButton maxSpicyBtn = (RadioRealButton) findViewById(R.id.maxButton);
     private String foodNameStr;//从外界设置的title文本
     private String messageStr;//从外界设置的消息文本
     private String foodPriceStr;
@@ -37,9 +46,11 @@ public class DialogDetail extends Dialog {
     private Integer foodNum = 1;
     private String yesStr, noStr;
     private int imageID;
-
+    private Context mContext;
     public DialogDetail(Context context,int imageId) {
         super(context, R.style.DetailDialog);
+        spicyDegreeID = 0;
+        mContext = context;
         imageID = imageId;
     }
 
@@ -67,10 +78,19 @@ public class DialogDetail extends Dialog {
 
         foodImage = (ImageView) findViewById(R.id.foodImage);
 
-        canSpicyButtonGroup = (RadioGroup) findViewById(R.id.canSpicyGroup);
+        canSpicyButtonGroup = (RadioRealButtonGroup) findViewById(R.id.canSpicyGroup);
 
         addButton = (ImageButton) findViewById(R.id.addButton);
         minusButton = (ImageButton) findViewById(R.id.minusButton);
+
+        canSpicyButtonGroup.setOnClickedButtonListener(new RadioRealButtonGroup.OnClickedButtonListener() {
+            @Override
+            public void onClickedButton(RadioRealButton button, int position) {
+                //Toast.makeText(mContext, "Clicked! Position: " + position, Toast.LENGTH_SHORT).show();
+                spicyDegreeID = position;
+            }
+        });
+
 
         if (canSpicy == false){
             canSpicyButtonGroup.setVisibility(View.GONE);
@@ -169,7 +189,9 @@ public class DialogDetail extends Dialog {
         }
         this.noOnclickListener = onNoOnclickListener;
     }
-
+    public static String getSpicy(){
+        return spicyDegreeString[spicyDegreeID];
+    }
     /**
      * 设置确定按钮的显示内容和监听
      *

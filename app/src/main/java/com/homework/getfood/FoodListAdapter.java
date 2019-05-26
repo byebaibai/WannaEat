@@ -86,13 +86,14 @@ public class FoodListAdapter extends SectionedBaseAdapter {
                 final Context context = arg0.getContext();
                 dialogDetail = new DialogDetail(arg0.getContext(),iconID);
                 System.out.println(fb.getIcon());
-                dialogDetail.setInfo(fb.getName(),fb.getPrice().toString(),false);
+                dialogDetail.setInfo(fb.getName(),fb.getPrice().toString(),fb.getSpicy());
                 dialogDetail.setYesOnclickListener("确定", new DialogDetail.onYesOnclickListener() {
                     @Override
                     public void onYesClick() {
                         Integer num = dialogDetail.getInfo();
                         if (num == 0) num ++;
                         FoodBean newItem = new FoodBean(fb.getId(),fb.getTypeID(),fb.getType(),fb.getName(),fb.getPrice(),fb.getIcon(),num);
+                        if (fb.getSpicy()) newItem.setName(fb.getName() + DialogDetail.getSpicy());
                         if (!cartMap.containsKey(newItem.getName()))cartMap.put(newItem.getName(),newItem);
                         else{
                             FoodBean temp = cartMap.get(newItem.getName());

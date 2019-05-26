@@ -48,6 +48,8 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 OrderFragment of = MainActivity.getFragment_order();
+                MakeFragment mf = MainActivity.getFragment_make();
+                if (mf != null) mf.refreshCart();
                 if (of != null) of.notifyData();
                 else System.out.println("None");
                 Intent intent = new Intent(OrderActivity.this,MainActivity.class);
@@ -59,6 +61,8 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 OrderFragment of = MainActivity.getFragment_order();
+                MakeFragment mf = MainActivity.getFragment_make();
+                if (mf != null) mf.refreshCart();
                 if (of != null) of.notifyData();
                 else System.out.println("None");
                 Intent intent = new Intent(OrderActivity.this,MainActivity.class);

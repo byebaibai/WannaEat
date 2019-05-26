@@ -7,13 +7,15 @@ public class FoodBean{
 	private Integer price;//价格
 	private String type;//类
 	private String icon;//图片
+	private Boolean isSpicy;
 	private int typeID;
 	private Integer cartNum;
 	public FoodBean(){
 
 	}
-	public FoodBean(String ID, String name, String price, String type, String typeID, String imageID){
+	public FoodBean(String ID, String name, String price, String type, String typeID, String imageID,Boolean spicy){
 		cartNum = 0;
+		isSpicy = spicy;
 		id = Integer.parseInt(ID);
 		this.name = name;
 		this.price = Integer.parseInt(price);
@@ -30,6 +32,15 @@ public class FoodBean{
 		this.type = type;
 		this.price = price;
  	}
+
+	public Boolean getSpicy() {
+		return isSpicy;
+	}
+
+	public void setSpicy(Boolean spicy) {
+		isSpicy = spicy;
+	}
+
 	public Integer getCartNum() {
 		return cartNum;
 	}

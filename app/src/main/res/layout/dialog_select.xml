@@ -25,7 +25,7 @@
             android:layout_marginTop="7dp"
             android:gravity="center"
             android:text="大片牛肉🐂"
-            android:textColor="#38ADFF"
+            android:textColor="#000000"
             android:textSize="18sp" />
 
         <LinearLayout
@@ -133,48 +133,68 @@
                 app:srcCompat="@drawable/minus" />
         </android.support.constraint.ConstraintLayout>
 
-        <RadioGroup
+        <co.ceryle.radiorealbutton.RadioRealButtonGroup
             android:id="@+id/canSpicyGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="14dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="97dp"
+            android:layout_width="173dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentEnd="true"
             android:layout_marginLeft="97dp"
-            android:layout_marginTop="66dp"
+            android:layout_marginTop="42dp"
+            android:layout_marginEnd="@dimen/dp0"
             android:gravity="center|fill_horizontal"
             android:orientation="horizontal"
-            tools:visibility="gone">
+            app:rrbg_selectorSize="3dp"
+            app:rrbg_selectorColor="@color/groupSelector"
+            app:rrbg_dividerSize="1dp"
+            app:rrbg_dividerColor="@color/black"
+            app:rrbg_animateDrawables_enter="overshoot"
+            app:rrbg_animateTexts_enter="overshoot"
+            tools:visibility="visible">
 
-            <RadioButton
-                android:id="@+id/radioButton"
+            <co.ceryle.radiorealbutton.RadioRealButton
+                android:id="@+id/minButton"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/canSpicyGroup"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:text="微辣"
-                android:textSize="9sp" />
+                app:rrb_text="微辣"
+                app:rrb_ripple="true"
+                app:rrb_textColor="#84827F"
+                app:rrb_checked="true"
+                app:rrb_textColorTo="#FBB065"
+                app:rrb_textSize="15dp" />
 
-            <RadioButton
-                android:id="@+id/radioButton2"
+            <co.ceryle.radiorealbutton.RadioRealButton
+                android:id="@+id/midButton"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:text="中辣"
-                android:textSize="9sp" />
+                app:rrb_text="中辣"
+                app:rrb_ripple="true"
+                app:rrb_textColor="#84827F"
+                app:rrb_checked="false"
+                app:rrb_textColorTo="#FB8A5C"
+                app:rrb_textSize="15dp" />
 
-            <RadioButton
-                android:id="@+id/radioButton3"
-                style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+            <co.ceryle.radiorealbutton.RadioRealButton
+                android:id="@+id/maxButton"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/canSpicyGroup"
+                android:layout_alignTop="@+id/canSpicyGroup"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:text="超辣"
-                android:textSize="9sp" />
-        </RadioGroup>
+                app:rrb_ripple="true"
+                app:rrb_textColor="#84827F"
+                app:rrb_checked="false"
+                app:rrb_textColorTo="#F9471C"
+                app:rrb_text="猛辣"
+                app:rrb_textSize="15dp" />
+        </co.ceryle.radiorealbutton.RadioRealButtonGroup>
 
         <TextView
             android:id="@+id/foodPrice"

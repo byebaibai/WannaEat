@@ -126,24 +126,8 @@ public class MakeFragment extends Fragment implements View.OnClickListener, Cart
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.shopping_cart:
-                if (AppContext.getCart().isEmpty() || AppContext.getCart() == null) {
-                    defaultText.setVisibility(View.VISIBLE);
-                } else {
-                    defaultText.setVisibility(View.GONE);
-                }
-
-                if (cardLayout.getVisibility() == View.GONE) {
-                    cardLayout.setVisibility(View.VISIBLE);
-                    cardShopLayout.setVisibility(View.VISIBLE);
-                    bg_layout.setVisibility(View.VISIBLE);
-
-                } else {
-                    cardLayout.setVisibility(View.GONE);
-                    bg_layout.setVisibility(View.GONE);
-                    cardShopLayout.setVisibility(View.GONE);
-                }
+                refreshCart();
                 break;
-
             case R.id.settlement:
                 System.out.println("Ah Buy!");
                 if(AppContext.getCart().isEmpty() || AppContext.getCart() == null){
@@ -179,6 +163,7 @@ public class MakeFragment extends Fragment implements View.OnClickListener, Cart
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        MainActivity.setFragment_make(this);
         rootView = inflater.inflate(R.layout.fragment_make, container, false);
         initView();
         pinnedListView = rootView.findViewById(R.id.view_pinned_list);
@@ -319,5 +304,24 @@ public class MakeFragment extends Fragment implements View.OnClickListener, Cart
             priceSum = priceSum + item.getCartNum() * item.getPrice();
         }
         return priceSum.toString();
+    }
+
+    public void refreshCart(){
+        if (AppContext.getCart().isEmpty() || AppContext.getCart() == null) {
+            defaultText.setVisibility(View.VISIBLE);
+        } else {
+            defaultText.setVisibility(View.GONE);
+        }
+
+        if (cardLayout.getVisibility() == View.GONE) {
+            cardLayout.setVisibility(View.VISIBLE);
+            cardShopLayout.setVisibility(View.VISIBLE);
+            bg_layout.setVisibility(View.VISIBLE);
+
+        } else {
+            cardLayout.setVisibility(View.GONE);
+            bg_layout.setVisibility(View.GONE);
+            cardShopLayout.setVisibility(View.GONE);
+        }
     }
 }
