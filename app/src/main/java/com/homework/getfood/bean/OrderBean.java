@@ -8,7 +8,7 @@ public class OrderBean {
     private Integer orderPrice;
     private Integer orderCouponType;
     private ArrayList<FoodBean> orderFoodList;
-
+    private Integer orderActualPrice;
     public OrderBean(int id,String time, int price, int couponType, ArrayList<FoodBean> list){
         orderID = id;
         orderTime = time;
@@ -19,6 +19,15 @@ public class OrderBean {
     public OrderBean(){
 
     }
+
+    public Integer getOrderActualPrice() {
+        return orderActualPrice;
+    }
+
+    public void setOrderActualPrice(Integer orderActualPrice) {
+        this.orderActualPrice = orderActualPrice;
+    }
+
     public Integer getOrderID() {
         return orderID;
     }

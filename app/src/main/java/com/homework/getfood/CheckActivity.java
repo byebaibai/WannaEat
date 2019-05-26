@@ -9,8 +9,11 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.homework.getfood.bean.CouponBean;
 import com.homework.getfood.bean.OrderBean;
 import com.homework.getfood.context.AppContext;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,7 +22,7 @@ public class CheckActivity extends AppCompatActivity {
 
     private static OrderBean orderData;
     private OrderFoodAdapter orderFoodAdapter;
-
+    private CouponAdapter couponAdapter;
     @BindView(R.id.sureBuy)
     TextView surebuy;
     @BindView(R.id.orderPrice)
@@ -32,6 +35,10 @@ public class CheckActivity extends AppCompatActivity {
     ConstraintLayout waitLayout;
     @BindView(R.id.paySuccess)
     ConstraintLayout successLayout;
+    @BindView(R.id.couponListView)
+    ListView couponlistview;
+    @BindView(R.id.originPrice)
+    TextView originPrice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +52,15 @@ public class CheckActivity extends AppCompatActivity {
         waitLayout.setVisibility(View.VISIBLE);
     }
     private void initView(){
-        orderPrice.setText("¥ " + orderData.getOrderPrice().toString());
+        Integer price = orderData.getOrderPrice();
+        couponAdapter = new CouponAdapter(this,AppContext.getCouponeList(price),price);
+        couponlistview.setAdapter(couponAdapter);
         orderFoodAdapter = new OrderFoodAdapter(this,orderData.getOrderFoodList());
         orderFoodListView.setAdapter(orderFoodAdapter);
+        final Integer afterCoupon = price - couponAdapter.getMinusTotal();
+        System.out.println(afterCoupon);
+        orderPrice.setText("¥ " + afterCoupon);
+        originPrice.setText("¥ " + price);
         surebuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +68,7 @@ public class CheckActivity extends AppCompatActivity {
                 AppContext.getCart().clear();
                 MakeFragment.setPrice();
                 final Intent intent = new Intent(CheckActivity.this,OrderActivity.class);
+                orderData.setOrderActualPrice(afterCoupon);
                 OrderActivity.setOrderData(orderData);
                 AppContext.updateOrder(orderData);
                 waitLayout.setVisibility(View.GONE);

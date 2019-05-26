@@ -56,7 +56,7 @@ public class OrderAdapter extends BaseAdapter{
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.orderPrice.setText(orderList.get(position).getOrderPrice().toString() + " ¥");
+        viewHolder.orderPrice.setText(orderList.get(position).getOrderActualPrice().toString() + " ¥");
         viewHolder.orderID.setText(orderList.get(position).getOrderID().toString());
         viewHolder.orderTime.setText(orderList.get(position).getOrderTime());
         String s = orderList.get(position).getOrderFoodList().get(0).getName() + "等商品";

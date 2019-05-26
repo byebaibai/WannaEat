@@ -8,6 +8,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.homework.getfood.bean.OrderBean;
+import com.homework.getfood.context.AppContext;
 import com.homework.getfood.util.StringFetcher;
 
 import java.util.Objects;
@@ -18,6 +19,7 @@ import butterknife.ButterKnife;
 public class OrderActivity extends AppCompatActivity {
     private static OrderBean orderData;
     private OrderFoodAdapter orderFoodAdapter;
+    private CouponAdapter couponAdapter;
     @BindView(R.id.orderTime)
     TextView orderTime;
     @BindView(R.id.orderID)
@@ -30,6 +32,10 @@ public class OrderActivity extends AppCompatActivity {
     TextView buyBuy;
     @BindView(R.id.getOrderList)
     TextView orderOrder;
+    @BindView(R.id.couponListView)
+    ListView couponlistview;
+    @BindView(R.id.originPrice)
+    TextView originPrice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +45,17 @@ public class OrderActivity extends AppCompatActivity {
         initView();
     }
     private void initView(){
+        Integer price = orderData.getOrderPrice();
+        couponAdapter = new CouponAdapter(this, AppContext.getCouponeList(price),price);
+        couponlistview.setAdapter(couponAdapter);
         orderTime.setText(orderData.getOrderTime());
         orderID.setText(orderData.getOrderID().toString());
-        orderPrice.setText("¥ " + orderData.getOrderPrice().toString());
         orderFoodAdapter = new OrderFoodAdapter(this,orderData.getOrderFoodList());
         orderFoodListView.setAdapter(orderFoodAdapter);
+        Integer afterCoupon = price - couponAdapter.getMinusTotal();
+        System.out.println(afterCoupon);
+        orderPrice.setText("¥ " + afterCoupon);
+        originPrice.setText("¥ " + price);
         buyBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -7,6 +7,7 @@ import android.content.res.XmlResourceParser;
 
 import com.alibaba.fastjson.JSON;
 import com.homework.getfood.R;
+import com.homework.getfood.bean.CouponBean;
 import com.homework.getfood.bean.FoodBean;
 import com.homework.getfood.bean.OrderBean;
 import com.homework.getfood.util.JsonUtils;
@@ -34,6 +35,7 @@ public class AppContext extends Application {
     private static String JsonString;
     private static AppContext mInstance;
     private static String packageName;
+    private static ArrayList<CouponBean> CouponeList;
     public static AppContext getContext() {
         return mInstance;
     }
@@ -69,6 +71,10 @@ public class AppContext extends Application {
     }
 
     private void initData() {
+        CouponeList = new ArrayList<CouponBean>();
+        CouponeList.add(new CouponBean(0));
+        CouponeList.add(new CouponBean(1));
+        CouponeList.add(new CouponBean(2));
         XmlResourceParser xrp = getResources().getXml(R.xml.food);
         try {
             //还没有到XML文档的结尾处
@@ -160,4 +166,32 @@ public class AppContext extends Application {
             e.printStackTrace();
         }
     }
+
+    public static ArrayList<CouponBean> getCouponeList() {
+        return CouponeList;
+    }
+
+    public static void setCouponeList(ArrayList<CouponBean> couponeList) {
+        CouponeList = couponeList;
+    }
+
+    public static ArrayList<CouponBean> getCouponeList(Integer price) {
+        ArrayList<CouponBean> cp = new ArrayList<CouponBean>();
+        if(price < 100) return cp;
+        else if(price >= 100 && price < 200){
+            cp.add(CouponeList.get(0));
+            return cp;
+        }else if(price >= 200 && price < 300){
+            cp.add(CouponeList.get(0));
+            cp.add(CouponeList.get(1));
+            return cp;
+        }else {
+            cp.add(CouponeList.get(0));
+            cp.add(CouponeList.get(2));
+            return cp;
+        }
+    }
+//    public static Integer getAfterCoupon(ArrayList<CouponBean> cp, Integer value){
+//
+//    }
 }
