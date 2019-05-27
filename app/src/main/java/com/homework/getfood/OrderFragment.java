@@ -75,7 +75,7 @@ public class OrderFragment extends Fragment {
                         AppContext.getContext());
                 deleteItem.setBackground(new ColorDrawable(Color.rgb(251,
                         111, 100)));
-                deleteItem.setWidth(dp2px(90));
+                deleteItem.setWidth(dp2px(60));
                 deleteItem.setIcon(R.drawable.garbage);
                 menu.addMenuItem(deleteItem);
             }

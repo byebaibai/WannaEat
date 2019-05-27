@@ -12,7 +12,7 @@
         android:layout_height="235dp"
         android:layout_alignParentTop="false"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/free_dialog_bg"
+        android:background="#FFFFFF"
         android:orientation="vertical">
 
         <LinearLayout
@@ -90,7 +90,7 @@
                 android:layout_marginTop="137dp"
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="8dp"
-                android:background="#FDFFFFFF"
+                android:background="#00FFFFFF"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -151,11 +151,11 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/text_group"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:gravity="center_vertical"
                 android:text="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n 辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。"
@@ -168,7 +168,7 @@
 
             <co.ceryle.radiorealbutton.RadioRealButtonGroup
                 android:id="@+id/canSpicyGroup"
-                android:layout_width="173dp"
+                android:layout_width="163dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"

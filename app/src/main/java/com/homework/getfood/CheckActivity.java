@@ -53,7 +53,7 @@ public class CheckActivity extends AppCompatActivity {
     }
     private void initView(){
         Integer price = orderData.getOrderPrice();
-        couponAdapter = new CouponAdapter(this,AppContext.getCouponeList(price),price);
+        couponAdapter = new CouponAdapter(this,AppContext.getCouponeList(price,orderData.getHasGroup()),price,orderData.getHasGroup());
         couponlistview.setAdapter(couponAdapter);
         orderFoodAdapter = new OrderFoodAdapter(this,orderData.getOrderFoodList());
         orderFoodListView.setAdapter(orderFoodAdapter);

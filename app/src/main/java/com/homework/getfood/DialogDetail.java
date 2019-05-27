@@ -46,6 +46,8 @@ public class DialogDetail extends Dialog {
     private Integer foodNum = 1;
     private String yesStr, noStr;
     private int imageID;
+    private TextView foodDetail;
+    private String detailString;
     private Context mContext;
     public DialogDetail(Context context,int imageId) {
         super(context, R.style.DetailDialog);
@@ -79,7 +81,7 @@ public class DialogDetail extends Dialog {
         foodImage = (ImageView) findViewById(R.id.foodImage);
 
         canSpicyButtonGroup = (RadioRealButtonGroup) findViewById(R.id.canSpicyGroup);
-
+        foodDetail = (TextView) findViewById(R.id.text_group);
         addButton = (ImageButton) findViewById(R.id.addButton);
         minusButton = (ImageButton) findViewById(R.id.minusButton);
 
@@ -162,15 +164,19 @@ public class DialogDetail extends Dialog {
         if (foodPriceStr != null){
             foodPrice.setText(foodPriceStr);
         }
+        if (detailString != null){
+            foodDetail.setText(detailString);
+        }
     }
     public void setName(String name){
         foodNameStr = name;
     }
-    public void setInfo(String name, String price, boolean spicy){
+    public void setInfo(String name, String price, boolean spicy,String detail){
         onePrice = Integer.parseInt(price);
         foodPriceStr = price + "¥";
         foodNameStr = name;
         canSpicy = spicy;
+        this.detailString = detail;
     }
     public Integer getInfo(){
         return foodNum;

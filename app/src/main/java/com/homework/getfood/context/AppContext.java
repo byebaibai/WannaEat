@@ -91,10 +91,14 @@ public class AppContext extends Application {
                         String price = xrp.getAttributeValue(null, "price");
                         String imageURL = xrp.getAttributeValue(null, "imageURL");
                         Integer canspicy = Integer.parseInt(xrp.getAttributeValue(null, "spicy"));
+                        Integer isGroup = Integer.parseInt(xrp.getAttributeValue(null, "group"));
+                        String detail = xrp.getAttributeValue(null, "detail");
+                        Boolean groupFlag = false;
+                        if (isGroup == 1) groupFlag = true;
                         Boolean spicyFlag = false;
                         if (canspicy == 1) spicyFlag = true;
                         String foodName = xrp.nextText();
-                        FoodBean fb = new FoodBean(foodID, foodName, price, foodType, foodTypeID, imageURL, spicyFlag);
+                        FoodBean fb = new FoodBean(foodID, foodName, price, foodType, foodTypeID, imageURL, spicyFlag,groupFlag,detail);
                         foodData.add(fb);
                         foodMap.put(fb.getName(), fb);
                         if(fb.getTypeID() > typeNum) typeNum = fb.getTypeID();
@@ -175,8 +179,9 @@ public class AppContext extends Application {
         CouponeList = couponeList;
     }
 
-    public static ArrayList<CouponBean> getCouponeList(Integer price) {
+    public static ArrayList<CouponBean> getCouponeList(Integer price,Boolean isGroup) {
         ArrayList<CouponBean> cp = new ArrayList<CouponBean>();
+        if (isGroup) return cp;
         if(price < 100) return cp;
         else if(price >= 100 && price < 200){
             cp.add(CouponeList.get(0));

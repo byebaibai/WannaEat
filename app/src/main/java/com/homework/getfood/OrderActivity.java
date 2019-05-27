@@ -46,7 +46,7 @@ public class OrderActivity extends AppCompatActivity {
     }
     private void initView(){
         Integer price = orderData.getOrderPrice();
-        couponAdapter = new CouponAdapter(this, AppContext.getCouponeList(price),price);
+        couponAdapter = new CouponAdapter(this, AppContext.getCouponeList(price,orderData.getHasGroup()),price,orderData.getHasGroup());
         couponlistview.setAdapter(couponAdapter);
         orderTime.setText(orderData.getOrderTime());
         orderID.setText(orderData.getOrderID().toString());

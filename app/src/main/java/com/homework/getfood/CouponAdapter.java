@@ -20,14 +20,16 @@ public class CouponAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private Context mContext;
     private Integer totalCost;
-    public CouponAdapter(Context context, ArrayList<CouponBean> coupon,Integer totalCost){
+    public CouponAdapter(Context context, ArrayList<CouponBean> coupon,Integer totalCost,Boolean isGroup){
         mContext = context;
         mInflater = LayoutInflater.from(context);
         couponBeanArrayList = coupon;
         this.totalCost = totalCost;
         minusTotal = 0;
-        for (CouponBean cb : coupon){
-            minusTotal += cb.getCost(totalCost);
+        if (!isGroup) {
+            for (CouponBean cb : coupon) {
+                minusTotal += cb.getCost(totalCost);
+            }
         }
     }
 

@@ -10,20 +10,24 @@ public class FoodBean{
 	private Boolean isSpicy;
 	private int typeID;
 	private Integer cartNum;
+	private String detail;
+	private Boolean isGroup;
 	public FoodBean(){
 
 	}
-	public FoodBean(String ID, String name, String price, String type, String typeID, String imageID,Boolean spicy){
+	public FoodBean(String ID, String name, String price, String type, String typeID, String imageID,Boolean spicy,Boolean isGroup, String detail){
 		cartNum = 0;
 		isSpicy = spicy;
 		id = Integer.parseInt(ID);
 		this.name = name;
 		this.price = Integer.parseInt(price);
 		this.type = type;
+		this.detail = detail;
+		this.isGroup = isGroup;
 		this.typeID = Integer.parseInt(typeID);
 		icon = imageID;
 	}
-	public FoodBean(int ID,int typeId,String type,String name,Integer price, String imageID, int cartNum){
+	public FoodBean(int ID,int typeId,String type,String name,Integer price, String imageID, int cartNum, Boolean isGroup, String detail){
 		id = ID;
 		typeID = typeId;
 		this.name = name;
@@ -31,7 +35,25 @@ public class FoodBean{
 		this.cartNum = cartNum;
 		this.type = type;
 		this.price = price;
+		this.detail = detail;
+		this.isGroup = isGroup;
  	}
+
+	public Boolean getGroup() {
+		return isGroup;
+	}
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+
+	public void setGroup(Boolean group) {
+		isGroup = group;
+	}
 
 	public Boolean getSpicy() {
 		return isSpicy;

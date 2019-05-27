@@ -1,29 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <foods>
-    <food id="1" typeID="1" type="必点下饭" price="45" imageURL="braisedpork" spicy="0" >红烧肉</food>
-    <food id="2" typeID="1" type="必点下饭" price="68" imageURL="bullfrog" spicy="1" >香辣牛蛙</food>
-    <food id="3" typeID="1" type="必点下饭" price="20" imageURL="cabbage" spicy="0" >手撕包菜</food>
-    <food id="4" typeID="1" type="必点下饭" price="68" imageURL="duckhead" spicy="1" >香辣鸭头</food>
-    <food id="5" typeID="1" type="必点下饭" price="40" imageURL="friedporkwithpepper" spicy="1" >辣椒炒肉</food>
-    <food id="6" typeID="1" type="必点下饭" price="78" imageURL="pickledfish" spicy="0" >酸菜鱼</food>
-    <food id="7" typeID="1" type="必点下饭" price="20" imageURL="potatofloss" spicy="0" >香辣土豆丝</food>
-    <food id="8" typeID="2" type="清凉饮品" price="5" imageURL="cola" spicy="0" >可乐</food>
-    <food id="9" typeID="2" type="清凉饮品" price="5" imageURL="sprite" spicy="0" >雪碧</food>
-    <food id="10" typeID="2" type="清凉饮品" price="6" imageURL="wanglaoji" spicy="0" >王老吉</food>
-    <food id="11" typeID="2" type="清凉饮品" price="30" imageURL="watermelonjuice" spicy="0" >西瓜汁</food>
-    <food id="12" typeID="3" type="爽口凉菜" price="10" imageURL="fernrootpowder" spicy="1" >酸辣蕨根粉</food>
-    <food id="13" typeID="3" type="爽口凉菜" price="10" imageURL="fungus" spicy="0" >木耳</food>
-    <food id="14" typeID="3" type="爽口凉菜" price="12" imageURL="mashedsoysauce" spicy="0" >麻酱油麦菜</food>
-    <food id="15" typeID="3" type="爽口凉菜" price="18" imageURL="preservedegg" spicy="0"> 皮蛋</food>
-    <food id="16" typeID="3" type="爽口凉菜" price="10" imageURL="refreshingmelon" spicy="0" >爽口小瓜</food>
-    <food id="17" typeID="3" type="爽口凉菜" price="34" imageURL="salivachicken" spicy="1" >口水鸡</food>
-    <food id="18" typeID="4" type="现煲浓汤" price="28" imageURL="cabbagetofusoup" spicy="0" >白菜豆腐汤</food>
-    <food id="19" typeID="4" type="现煲浓汤" price="56" imageURL="ginsengchickensoup" spicy="0" >人参老鸡汤</food>
-    <food id="20" typeID="4" type="现煲浓汤" price="48" imageURL="porkribssoup" spicy="0" >排骨冬瓜汤</food>
-    <food id="21" typeID="4" type="现煲浓汤" price="60" imageURL="shrimpfishballsoup" spicy="0" >鱼丸汤</food>
-    <food id="22" typeID="5" type="主食点心" price="20" imageURL="eggfriedrice" spicy="0" >蛋炒饭</food>
-    <food id="23" typeID="5" type="主食点心" price="2" imageURL="rice" spicy="0" >白米饭</food>
-    <food id="24" typeID="5" type="主食点心" price="12" imageURL="sugartart" spicy="0" >糖油粑粑(3个)</food>
-    <food id="25" typeID="5" type="主食点心" price="15" imageURL="wineball" spicy="0" >酒酿圆子</food>
-    <food id="26" typeID="5" type="主食点心" price="6" imageURL="zongzi" spicy="0" >肉粽</food>
+    <food id="1" typeID="1" type="必点下饭" price="45" imageURL="braisedpork" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">红烧肉</food>
+    <food id="2" typeID="1" type="必点下饭" price="68" imageURL="bullfrog" spicy="1" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">香辣牛蛙</food>
+    <food id="3" typeID="1" type="必点下饭" price="20" imageURL="cabbage" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">手撕包菜</food>
+    <food id="4" typeID="1" type="必点下饭" price="68" imageURL="duckhead" spicy="1" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">香辣鸭头</food>
+    <food id="5" typeID="1" type="必点下饭" price="40" imageURL="friedporkwithpepper" spicy="1" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">辣椒炒肉</food>
+    <food id="6" typeID="1" type="必点下饭" price="78" imageURL="pickledfish" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">酸菜鱼</food>
+    <food id="7" typeID="1" type="必点下饭" price="20" imageURL="potatofloss" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">香辣土豆丝</food>
+    <food id="9" typeID="2" type="现煲浓汤" price="28" imageURL="cabbagetofusoup" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">白菜豆腐汤</food>
+    <food id="10" typeID="2" type="现煲浓汤" price="56" imageURL="ginsengchickensoup" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">人参老鸡汤</food>
+    <food id="11" typeID="2" type="现煲浓汤" price="48" imageURL="porkribssoup" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">排骨冬瓜汤</food>
+    <food id="12" typeID="2" type="现煲浓汤" price="60" imageURL="shrimpfishballsoup" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">鱼丸汤</food>
+    <food id="13" typeID="3" type="爽口凉菜" price="10" imageURL="fernrootpowder" spicy="1" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">酸辣蕨根粉</food>
+    <food id="14" typeID="3" type="爽口凉菜" price="10" imageURL="fungus" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">木耳</food>
+    <food id="15" typeID="3" type="爽口凉菜" price="12" imageURL="mashedsoysauce" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">麻酱油麦菜</food>
+    <food id="16" typeID="3" type="爽口凉菜" price="18" imageURL="preservedegg" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">皮蛋擂辣椒</food>
+    <food id="17" typeID="3" type="爽口凉菜" price="10" imageURL="refreshingmelon" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">爽口小瓜</food>
+    <food id="18" typeID="3" type="爽口凉菜" price="34" imageURL="salivachicken" spicy="1" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">口水鸡</food>
+    <food id="19" typeID="4" type="主食点心" price="20" imageURL="eggfriedrice" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">蛋炒饭</food>
+    <food id="20" typeID="4" type="主食点心" price="2" imageURL="rice" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">白米饭</food>
+    <food id="21" typeID="4" type="主食点心" price="12" imageURL="sugartart" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">糖油粑粑(3个)</food>
+    <food id="22" typeID="4" type="主食点心" price="15" imageURL="wineball" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">酒酿圆子</food>
+    <food id="23" typeID="4" type="主食点心" price="6" imageURL="zongzi" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">肉粽</food>
+    <food id="24" typeID="5" type="清凉饮品" price="5" imageURL="cola" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">可乐</food>
+    <food id="25" typeID="5" type="清凉饮品" price="5" imageURL="sprite" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">雪碧</food>
+    <food id="26" typeID="5" type="清凉饮品" price="6" imageURL="wanglaoji" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">王老吉</food>
+    <food id="27" typeID="5" type="清凉饮品" price="30" imageURL="watermelonjuice" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
+辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">西瓜汁</food>
+    <food id="28" typeID="6" type="精选套餐" price="45" imageURL="group1" spicy="1" group="1" detail="辣椒炒肉×1\n米饭×1\n(雪碧或可乐)×1\n(套餐订单无法享受优惠券优惠)">单人精选</food>
+    <food id="29" typeID="6" type="精选套餐" price="80" imageURL="group2" spicy="1" group="1" detail="香辣土豆丝×1\n辣椒炒肉×1\n皮蛋擂辣椒×1\n米饭×3\n(雪碧或可乐)×2\n(套餐订单无法享受优惠券优惠)">双人绝配</food>
+    <food id="30" typeID="6" type="精选套餐" price="210" imageURL="group3" spicy="1" group="1" detail="香辣牛蛙×1   香辣土豆丝×1\n辣椒炒肉×1   排骨冬瓜汤×1\n皮蛋擂辣椒×1   麻酱油麦菜×1\n糖油粑粑×2\n米饭×5\n(雪碧或可乐)×5\n(套餐订单无法享受优惠券优惠)">缤纷多人</food>
 </foods>

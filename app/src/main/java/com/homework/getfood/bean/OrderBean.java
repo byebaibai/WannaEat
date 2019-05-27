@@ -9,15 +9,40 @@ public class OrderBean {
     private Integer orderCouponType;
     private ArrayList<FoodBean> orderFoodList;
     private Integer orderActualPrice;
+    private Boolean hasGroup;
+    private Integer foodNumber;
     public OrderBean(int id,String time, int price, int couponType, ArrayList<FoodBean> list){
         orderID = id;
         orderTime = time;
         orderPrice = price;
         orderCouponType = couponType;
         orderFoodList = list;
+        hasGroup = checkList();
+        foodNumber = getNumber();
     }
     public OrderBean(){
 
+    }
+    private Integer getNumber(){
+        Integer n = 0;
+        for (FoodBean fb : orderFoodList){
+            n += fb.getCartNum();
+        }
+        return n;
+    }
+    private Boolean checkList(){
+        for (FoodBean fb : orderFoodList){
+            if (fb.getGroup()) return true;
+        }
+        return false;
+    }
+
+    public Boolean getHasGroup() {
+        return hasGroup;
+    }
+
+    public void setHasGroup(Boolean hasGroup) {
+        this.hasGroup = hasGroup;
     }
 
     public Integer getOrderActualPrice() {
@@ -46,6 +71,14 @@ public class OrderBean {
 
     public ArrayList<FoodBean> getOrderFoodList() {
         return orderFoodList;
+    }
+
+    public Integer getFoodNumber() {
+        return foodNumber;
+    }
+
+    public void setFoodNumber(Integer foodNumber) {
+        this.foodNumber = foodNumber;
     }
 
     public Integer getOrderPrice() {

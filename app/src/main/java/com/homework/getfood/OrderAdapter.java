@@ -59,7 +59,11 @@ public class OrderAdapter extends BaseAdapter{
         viewHolder.orderPrice.setText(orderList.get(position).getOrderActualPrice().toString() + " ¥");
         viewHolder.orderID.setText(orderList.get(position).getOrderID().toString());
         viewHolder.orderTime.setText(orderList.get(position).getOrderTime());
-        String s = orderList.get(position).getOrderFoodList().get(0).getName() + "等商品";
+        Integer n = orderList.get(position).getFoodNumber();
+        if (n == null) n = 1;
+        String s;
+        if (n > 1) s = orderList.get(position).getOrderFoodList().get(0).getName() + "等 " + n.toString() + " 份食物";
+        else s = orderList.get(position).getOrderFoodList().get(0).getName();
         viewHolder.orderGoods.setText(s);
         viewHolder.orderDetail.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
