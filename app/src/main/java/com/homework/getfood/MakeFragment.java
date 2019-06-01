@@ -18,11 +18,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSON;
 import com.homework.getfood.bean.FoodBean;
 import com.homework.getfood.bean.OrderBean;
 import com.homework.getfood.context.AppContext;
-import com.homework.getfood.util.JsonUtils;
 import com.homework.getfood.util.TimeFetcher;
 
 import java.util.ArrayList;
@@ -58,8 +56,6 @@ public class MakeFragment extends Fragment implements View.OnClickListener, Cart
     private View rootView;
 
     private HashMap<String,FoodBean> foodMap;
-    private HashMap<String,FoodBean> cartMap;
-    private int typeNum;
     private ImageView shopping_cart;
     private TextView defaultText;
     private ListView shoppingListView;
@@ -68,13 +64,15 @@ public class MakeFragment extends Fragment implements View.OnClickListener, Cart
     private LinearLayout cardShopLayout;
     private View bg_layout;
     private TextView settlement;
-    private List<FoodBean> productList;
     private CartAdapter cartAdapter;
     @SuppressLint("StaticFieldLeak")
     public static TextView shoppingPrice;
 
     @SuppressLint("StaticFieldLeak")
     public static TextView shoppingNum;
+
+    public MakeFragment() {
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

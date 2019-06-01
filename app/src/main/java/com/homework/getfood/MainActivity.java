@@ -1,33 +1,15 @@
 package com.homework.getfood;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.XmlResourceParser;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.annotation.NonNull;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
+import android.view.KeyEvent;
+import android.widget.Toast;
 
-import com.homework.getfood.bean.FoodBean;
 import com.homework.getfood.context.AppContext;
-import com.homework.getfood.util.IconFetcher;
 import com.homework.getfood.util.NoScrollViewPager;
-import com.homework.getfood.util.StringFetcher;
-
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
-import java.util.ArrayList;
-
-import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     private static MakeFragment fragment_make;
@@ -38,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private MainFragmentPagerAdapter FragmentPagerAdapter;
     private AppContext globalFood = (AppContext) getApplication();
     private TabLayout.Tab makeOrder;
+    private long time = 0;
     private TabLayout.Tab listOrder;
     final int[] ICON = new int[]{
             R.drawable.ic_home_black_24dp,
@@ -90,4 +73,28 @@ public class MainActivity extends AppCompatActivity {
     public static MakeFragment getFragment_make(){
         return fragment_make;
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        /* 点击的为返回键 */
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exit();// 退出方法
+        }
+        return true;
+    }
+
+    private void exit() {
+        if (System.currentTimeMillis() - time > 2000) {
+            time = System.currentTimeMillis();
+            showToast("再点击一次退出应用程序");
+        }else{
+            this.finishAffinity();
+            System.exit(0);
+        }
+    }
+    @SuppressLint("WrongConstant")
+    public void showToast(String text) {
+        Toast.makeText(this, text, 2000).show();
+    }
+
 }

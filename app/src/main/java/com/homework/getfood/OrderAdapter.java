@@ -2,12 +2,12 @@ package com.homework.getfood;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.content.Intent;
 
 import com.homework.getfood.bean.OrderBean;
 import com.homework.getfood.context.AppContext;
@@ -44,7 +44,7 @@ public class OrderAdapter extends BaseAdapter{
         this.notifyDataSetChanged();
         final ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.item_order,null);
+            convertView = mInflater.inflate(R.layout.adapter_order_item,null);
             viewHolder = new ViewHolder();
             viewHolder.orderTime = (TextView) convertView.findViewById(R.id.order_time);
             viewHolder.orderDetail = (TextView) convertView.findViewById(R.id.text_detail);
@@ -69,7 +69,7 @@ public class OrderAdapter extends BaseAdapter{
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mContext,OrderActivity.class);
+                Intent intent=new Intent(mContext, OrderActivity.class);
                 OrderActivity.setOrderData(orderList.get(position));
                 mContext.startActivity(intent);
             }

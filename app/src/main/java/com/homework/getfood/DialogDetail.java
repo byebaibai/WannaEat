@@ -4,18 +4,11 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.text.method.DigitsKeyListener;
-import android.view.KeyEvent;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.view.View;
-import android.widget.Toast;
 
 import co.ceryle.radiorealbutton.RadioRealButton;
 import co.ceryle.radiorealbutton.RadioRealButtonGroup;
@@ -59,7 +52,7 @@ public class DialogDetail extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_select);
+        setContentView(R.layout.view_dialog_select);
         setCanceledOnTouchOutside(false);
 
         initView();

@@ -12,8 +12,6 @@ import android.widget.HeaderViewListAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.homework.getfood.SectionedBaseAdapter;
-
 public class PinnedHeaderListView extends ListView implements OnScrollListener {
 
     private OnScrollListener mOnScrollListener;

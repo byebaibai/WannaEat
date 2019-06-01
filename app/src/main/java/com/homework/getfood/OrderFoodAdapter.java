@@ -8,8 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.homework.getfood.R;
 import com.homework.getfood.bean.FoodBean;
-import com.homework.getfood.context.AppContext;
 import com.homework.getfood.util.IconFetcher;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class OrderFoodAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent){
         final ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.item_food_order,null);
+            convertView = mInflater.inflate(R.layout.adapter_food_order_item,null);
             viewHolder = new ViewHolder();
             viewHolder.foodImage = (ImageView) convertView.findViewById(R.id.image_food_item);
             viewHolder.foodName = (TextView) convertView.findViewById(R.id.text_food_item);

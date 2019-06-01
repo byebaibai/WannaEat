@@ -1,58 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <foods>
-    <food id="1" typeID="1" type="必点下饭" price="45" imageURL="braisedpork" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">红烧肉</food>
-    <food id="2" typeID="1" type="必点下饭" price="68" imageURL="bullfrog" spicy="1" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">香辣牛蛙</food>
-    <food id="3" typeID="1" type="必点下饭" price="20" imageURL="cabbage" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">手撕包菜</food>
-    <food id="4" typeID="1" type="必点下饭" price="68" imageURL="duckhead" spicy="1" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">香辣鸭头</food>
+    <food id="1" typeID="1" type="必点下饭" price="45" imageURL="braisedpork" spicy="0" group="0" detail="红烧肉是一道著名的大众菜肴，属于热菜。其以五花肉为制作主料，最好选用肥瘦相间的三层肉（五花肉）来做，做法多达二三十种。">红烧肉</food>
+    <food id="2" typeID="1" type="必点下饭" price="68" imageURL="bullfrog" spicy="1" group="0" detail="香辣牛蛙是一道江西的传统名菜，属于赣菜。牛蛙的营养价值非常丰富，味道鲜美。每100克蛙肉中含蛋白质19.9克，脂肪0.3克，是一种高蛋白质、低脂肪、低胆固醇营养食品，备受人们的喜爱。牛蛙还有滋补解毒的功效，消化功能差或胃酸过多的人以及体质弱的人可以用来滋补身体">香辣牛蛙</food>
+    <food id="3" typeID="1" type="必点下饭" price="20" imageURL="cabbage" spicy="0" group="0" detail="手撕包菜是一道色香味俱全的汉族名菜，属于湘菜系。此菜红白相间，麻辣鲜香，爽脆清甜，除了可开胃增食欲外，还有美白祛斑、预防感冒和胃溃疡等作用。以小青包菜、蒜片、葱段、茶油、盐、味精、鸡精、生抽、高汤、醋等制作而成。">手撕包菜</food>
+    <food id="4" typeID="1" type="必点下饭" price="68" imageURL="duckhead" spicy="1" group="0" detail="香辣鸭头，是一道地道的香辣口味四川菜。">香辣鸭头</food>
     <food id="5" typeID="1" type="必点下饭" price="40" imageURL="friedporkwithpepper" spicy="1" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
 辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">辣椒炒肉</food>
-    <food id="6" typeID="1" type="必点下饭" price="78" imageURL="pickledfish" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">酸菜鱼</food>
-    <food id="7" typeID="1" type="必点下饭" price="20" imageURL="potatofloss" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">香辣土豆丝</food>
-    <food id="9" typeID="2" type="现煲浓汤" price="28" imageURL="cabbagetofusoup" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">白菜豆腐汤</food>
-    <food id="10" typeID="2" type="现煲浓汤" price="56" imageURL="ginsengchickensoup" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">人参老鸡汤</food>
-    <food id="11" typeID="2" type="现煲浓汤" price="48" imageURL="porkribssoup" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">排骨冬瓜汤</food>
-    <food id="12" typeID="2" type="现煲浓汤" price="60" imageURL="shrimpfishballsoup" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">鱼丸汤</food>
-    <food id="13" typeID="3" type="爽口凉菜" price="10" imageURL="fernrootpowder" spicy="1" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">酸辣蕨根粉</food>
-    <food id="14" typeID="3" type="爽口凉菜" price="10" imageURL="fungus" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">木耳</food>
-    <food id="15" typeID="3" type="爽口凉菜" price="12" imageURL="mashedsoysauce" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">麻酱油麦菜</food>
-    <food id="16" typeID="3" type="爽口凉菜" price="18" imageURL="preservedegg" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">皮蛋擂辣椒</food>
-    <food id="17" typeID="3" type="爽口凉菜" price="10" imageURL="refreshingmelon" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">爽口小瓜</food>
-    <food id="18" typeID="3" type="爽口凉菜" price="34" imageURL="salivachicken" spicy="1" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">口水鸡</food>
-    <food id="19" typeID="4" type="主食点心" price="20" imageURL="eggfriedrice" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">蛋炒饭</food>
-    <food id="20" typeID="4" type="主食点心" price="2" imageURL="rice" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">白米饭</food>
-    <food id="21" typeID="4" type="主食点心" price="12" imageURL="sugartart" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">糖油粑粑(3个)</food>
-    <food id="22" typeID="4" type="主食点心" price="15" imageURL="wineball" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">酒酿圆子</food>
-    <food id="23" typeID="4" type="主食点心" price="6" imageURL="zongzi" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">肉粽</food>
-    <food id="24" typeID="5" type="清凉饮品" price="5" imageURL="cola" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">可乐</food>
-    <food id="25" typeID="5" type="清凉饮品" price="5" imageURL="sprite" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">雪碧</food>
-    <food id="26" typeID="5" type="清凉饮品" price="6" imageURL="wanglaoji" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">王老吉</food>
-    <food id="27" typeID="5" type="清凉饮品" price="30" imageURL="watermelonjuice" spicy="0" group="0" detail="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n
-辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。">西瓜汁</food>
-    <food id="28" typeID="6" type="精选套餐" price="45" imageURL="group1" spicy="1" group="1" detail="辣椒炒肉×1\n米饭×1\n(雪碧或可乐)×1\n(套餐订单无法享受优惠券优惠)">单人精选</food>
-    <food id="29" typeID="6" type="精选套餐" price="80" imageURL="group2" spicy="1" group="1" detail="香辣土豆丝×1\n辣椒炒肉×1\n皮蛋擂辣椒×1\n米饭×3\n(雪碧或可乐)×2\n(套餐订单无法享受优惠券优惠)">双人绝配</food>
-    <food id="30" typeID="6" type="精选套餐" price="210" imageURL="group3" spicy="1" group="1" detail="香辣牛蛙×1   香辣土豆丝×1\n辣椒炒肉×1   排骨冬瓜汤×1\n皮蛋擂辣椒×1   麻酱油麦菜×1\n糖油粑粑×2\n米饭×5\n(雪碧或可乐)×5\n(套餐订单无法享受优惠券优惠)">缤纷多人</food>
+    <food id="6" typeID="1" type="必点下饭" price="78" imageURL="pickledfish" spicy="0" group="0" detail="酸菜鱼也称为酸汤鱼，是一道源自重庆的经典菜品，以其特有的调味和独特的烹调技法而著称。流行于上世纪90年代，是重庆江湖菜的开路先锋之一。\n
+酸菜鱼以草鱼为主料，配以泡菜等食材煮制而成，口味酸辣可口；鱼含丰富优质蛋白，能提供人丰富的蛋白质、矿物质等营养；酸菜中的乳酸可以促进人体对铁元素的吸收，还可以增加人的食欲。">酸菜鱼</food>
+    <food id="7" typeID="1" type="必点下饭" price="20" imageURL="potatofloss" spicy="0" group="0" detail="香辣土豆丝，是由主料土豆，辅料辣椒等食材做成的一道菜品，属于家常菜。">香辣土豆丝</food>
+    <food id="9" typeID="2" type="现煲浓汤" price="28" imageURL="cabbagetofusoup" spicy="0" group="0" detail="白菜豆腐汤是一道简易的家常汤品。主料是白菜和豆腐，主要烹饪工艺是煮。味道鲜美，而且含有丰富的蛋白质和维生素，口感独特，受到大众喜爱。">白菜豆腐汤</food>
+    <food id="10" typeID="2" type="现煲浓汤" price="56" imageURL="ginsengchickensoup" spicy="0" group="0" detail="人参鸡汤是一道美味的菜肴，肉类食品和滋补类食品的完美组合，最具代表性的传统料理之一。">人参老鸡汤</food>
+    <food id="11" typeID="2" type="现煲浓汤" price="48" imageURL="porkribssoup" spicy="0" group="0" detail="排骨冬瓜汤是由猪肉排骨和冬瓜配以开水及部分作料制作而成，该菜品含有丰富的蛋白质、维生素，可以补身体。">排骨冬瓜汤</food>
+    <food id="12" typeID="2" type="现煲浓汤" price="60" imageURL="shrimpfishballsoup" spicy="0" group="0" detail="鱼丸汤是一道菜品，是以鱼丸主要材料煮制而成的汤。其味道会因制作所用的鱼肉种类而有所不同。新鲜的鱼丸不仅保持着鱼肉本身的营养，而且还带有鱼肉所没有的韧性和爽口。">鱼丸汤</food>
+    <food id="13" typeID="3" type="爽口凉菜" price="10" imageURL="fernrootpowder" spicy="1" group="0" detail="酸辣蕨根粉是四川九寨沟的一道传统特色小吃，采九寨沟山上鲜蕨菜，用木棒击打至出浆，把浆烘至成粉状，吃起来很有韧劲，黑乎乎的蕨根粉上有了红红的小米辣，令这道菜平添了几分“姿色”。而且蕨根粉富含钙、铁、锌、磷、硒等微量元素和人体所需的多种氨基酸，具有滑肠通便、清热解毒、消脂降压等功效，还有防癌、护肝等药用功能。">酸辣蕨根粉</food>
+    <food id="14" typeID="3" type="爽口凉菜" price="10" imageURL="fungus" spicy="0" group="0" detail="酸辣木耳是凉菜中的霸主，再加上小青柠，增添一分泰式风味">泰式青柠小木耳</food>
+    <food id="15" typeID="3" type="爽口凉菜" price="12" imageURL="mashedsoysauce" spicy="0" group="0" detail="麻酱油麦菜是用油麦菜制作的一道家常菜。油麦菜含有大量维生素和大量钙、铁、蛋白质、脂肪、维生素A、VB1、VB2等营养成分。">麻酱油麦菜</food>
+    <food id="16" typeID="3" type="爽口凉菜" price="18" imageURL="preservedegg" spicy="0" group="0" detail="主要材料为皮蛋、尖椒、大蒜、食盐，是湘菜中一道非常有名的下饭菜。">皮蛋擂辣椒</food>
+    <food id="17" typeID="3" type="爽口凉菜" price="10" imageURL="refreshingmelon" spicy="0" group="0" detail="云南小瓜拌入小青柠，圣女果，蔓越莓干，清爽派对，酸辣开胃">爽口小瓜</food>
+    <food id="18" typeID="3" type="爽口凉菜" price="34" imageURL="salivachicken" spicy="1" group="0" detail="口水鸡是中国四川传统特色菜肴，属于川菜系中的凉菜，佐料丰富，集麻辣鲜香嫩爽于一身。 在烹制时，煮鸡用的汤料很有讲究，需要恰到好处，这样可以最大限度地保存鸡的可溶性蛋白，增加鸡肉的鲜美程度，又能具备其特有的香型和滋味。">口水鸡</food>
+    <food id="19" typeID="4" type="主食点心" price="20" imageURL="eggfriedrice" spicy="0" group="0" detail="蛋炒饭，是一种常见菜肴。">蛋炒饭</food>
+    <food id="20" typeID="4" type="主食点心" price="2" imageURL="rice" spicy="0" group="0" detail="米香清甜有弹性">稻花香米饭</food>
+    <food id="21" typeID="4" type="主食点心" price="12" imageURL="sugartart" spicy="0" group="0" detail="糖油粑粑，是湖南长沙市的地方传统名吃。">糖油粑粑(3个)</food>
+    <food id="22" typeID="4" type="主食点心" price="15" imageURL="wineball" spicy="0" group="0" detail="酒酿圆子，是中国江南地区传统小吃。糯米粉搓的小圆子与酒酿同煮而成。酒酿味浓甜润，圆子软糯，汤品甜香。">酒酿圆子</food>
+    <food id="23" typeID="4" type="主食点心" price="6" imageURL="zongzi" spicy="0" group="0" detail="肉粽起源于福建泉州，闽南地区以及台湾东南亚的特色传统美食，作为端午节节日食俗。其选料讲究，配料多样，制作精细，历史悠久，味道香甜，油润不腻，色泽红黄闪亮，以独有的风味，享誉海内外。">肉粽</food>
+    <food id="24" typeID="5" type="清凉饮品" price="5" imageURL="cola" spicy="0" group="0" detail="可乐（英语：Cola）是一种黑褐色、带有甜味、含咖啡因的碳酸饮料，但不含酒精，非常流行。">可乐</food>
+    <food id="25" typeID="5" type="清凉饮品" price="5" imageURL="sprite" spicy="0" group="0" detail="雪碧（英语：Sprite），是由柠檬苏打、香精组成而不含咖啡因的软性饮料，由可口可乐公司生产。它于1961年在美国推出市场，是可口可乐公司用来对付于1929年已经以“锂化柠檬”（Lithiated Lemon）为名而大受欢迎的七喜饮品。">雪碧</food>
+    <food id="26" typeID="5" type="清凉饮品" price="6" imageURL="wanglaoji" spicy="0" group="0" detail="王老吉是王老吉凉茶的品牌，创立于清道光年间（1828年），创始人王泽邦，被公认为凉茶始祖，采用本草植物材料配制而成，有“凉茶王”之称。产品形式经历了水碗凉茶——凉茶包——凉茶粉 ——凉茶饮料等载体变化。">王老吉</food>
+    <food id="27" typeID="5" type="清凉饮品" price="30" imageURL="watermelonjuice" spicy="0" group="0" detail="西瓜汁是以西瓜为原经过物理方法如压榨、离心、萃取等得到的汁液产品料，具有解暑功效。口味清甜细腻，冰镇之后口感更好，夏季倍受人青睐。">西瓜汁</food>
+    <food id="28" typeID="6" type="精选套餐" price="45" imageURL="group1" spicy="1" group="1" detail="辣椒炒肉×1\n米饭×1\n(雪碧或可乐)×1\n  (套餐订单无法享受优惠券优惠)">单人精选套餐</food>
+    <food id="29" typeID="6" type="精选套餐" price="80" imageURL="group2" spicy="1" group="1" detail="香辣土豆丝×1\n辣椒炒肉×1\n皮蛋擂辣椒×1\n米饭×3\n(雪碧或可乐)×2\n  (套餐订单无法享受优惠券优惠)">双人绝配套餐</food>
+    <food id="30" typeID="6" type="精选套餐" price="210" imageURL="group3" spicy="1" group="1" detail="香辣牛蛙×1   香辣土豆丝×1\n辣椒炒肉×1   排骨冬瓜汤×1\n皮蛋擂辣椒×1   麻酱油麦菜×1\n糖油粑粑×2\n米饭×5\n(雪碧或可乐)×5\n  套餐订单无法享受优惠券优惠)">缤纷多人套餐</food>
 </foods>

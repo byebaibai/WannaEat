@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.homework.getfood.R;
-
 import java.util.ArrayList;
 
 public class FoodTypeListAdapter extends BaseAdapter {
@@ -43,7 +41,7 @@ public class FoodTypeListAdapter extends BaseAdapter {
         Holder holder = null;
         if (arg1 == null) {
             holder = new Holder();
-            arg1 = LayoutInflater.from(context).inflate(R.layout.item_food_type, null);
+            arg1 = LayoutInflater.from(context).inflate(R.layout.adapter_food_type_item, null);
             holder.left_list_item = (TextView) arg1.findViewById(R.id.text_type_item);
             arg1.setTag(holder);
         } else {

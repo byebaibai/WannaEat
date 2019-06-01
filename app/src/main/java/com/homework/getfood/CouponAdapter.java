@@ -2,7 +2,6 @@ package com.homework.getfood;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.homework.getfood.bean.CouponBean;
-import com.homework.getfood.context.AppContext;
 
 import java.util.ArrayList;
 
@@ -54,7 +52,7 @@ public class CouponAdapter extends BaseAdapter {
         this.notifyDataSetChanged();
         final CouponAdapter.ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.item_coupon,null);
+            convertView = mInflater.inflate(R.layout.adapter_coupon_item,null);
             viewHolder = new CouponAdapter.ViewHolder();
             viewHolder.couponName = (TextView) convertView.findViewById(R.id.couponName);
             viewHolder.couponCost = (TextView) convertView.findViewById(R.id.minusCost);

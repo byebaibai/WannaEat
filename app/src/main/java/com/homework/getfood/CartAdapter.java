@@ -5,20 +5,15 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.homework.getfood.CartListener;
-import com.homework.getfood.MakeFragment;
 import com.homework.getfood.bean.FoodBean;
+import com.homework.getfood.context.AppContext;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import com.homework.getfood.R;
-import com.homework.getfood.context.AppContext;
 
 public class CartAdapter extends BaseAdapter {
 
@@ -61,7 +56,7 @@ public class CartAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.item_car, null);
+            convertView = mInflater.inflate(R.layout.adapter_cart_item, null);
             viewHolder = new ViewHolder();
             viewHolder.commodityName = (TextView) convertView.findViewById(R.id.text_item_name);
             viewHolder.commodityPrise = (TextView) convertView.findViewById(R.id.text_item_price);

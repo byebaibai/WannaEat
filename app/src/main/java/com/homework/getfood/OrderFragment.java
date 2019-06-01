@@ -1,9 +1,7 @@
 package com.homework.getfood;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -12,19 +10,15 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
-import com.homework.getfood.bean.FoodBean;
 import com.homework.getfood.bean.OrderBean;
 import com.homework.getfood.context.AppContext;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -85,7 +79,6 @@ public class OrderFragment extends Fragment {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                 if (index == 0) {
-                    System.out.println("Delete");
                     AppContext.getOrderBeanArrayList().remove(position);
                     orderAdapter.notifyDataSetChanged();
                     AppContext.updateRemove();

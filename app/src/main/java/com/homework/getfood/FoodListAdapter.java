@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.homework.getfood.bean.FoodBean;
 import com.homework.getfood.context.AppContext;
@@ -18,8 +17,6 @@ import com.homework.getfood.util.IconFetcher;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import butterknife.BindView;
 
 public class FoodListAdapter extends SectionedBaseAdapter {
 
@@ -69,7 +66,7 @@ public class FoodListAdapter extends SectionedBaseAdapter {
         if (convertView == null) {
             LayoutInflater inflator = (LayoutInflater) parent.getContext()
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            layout = (RelativeLayout) inflator.inflate(R.layout.item_food, null);
+            layout = (RelativeLayout) inflator.inflate(R.layout.adapter_food_item, null);
         } else {
             layout = (RelativeLayout) convertView;
         }
@@ -127,7 +124,7 @@ public class FoodListAdapter extends SectionedBaseAdapter {
         if (convertView == null) {
             LayoutInflater inflator = (LayoutInflater) parent.getContext()
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            layout = (LinearLayout) inflator.inflate(R.layout.item_header, null);
+            layout = (LinearLayout) inflator.inflate(R.layout.adapter_header_item, null);
         } else {
             layout = (LinearLayout) convertView;
         }

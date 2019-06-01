@@ -1,15 +1,17 @@
 package com.homework.getfood;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.homework.getfood.bean.OrderBean;
 import com.homework.getfood.context.AppContext;
-import com.homework.getfood.util.StringFetcher;
 
 import java.util.Objects;
 
@@ -19,6 +21,7 @@ import butterknife.ButterKnife;
 public class OrderActivity extends AppCompatActivity {
     private static OrderBean orderData;
     private OrderFoodAdapter orderFoodAdapter;
+    private long time = 0;
     private CouponAdapter couponAdapter;
     @BindView(R.id.orderTime)
     TextView orderTime;
@@ -89,5 +92,27 @@ public class OrderActivity extends AppCompatActivity {
 
     public static void setOrderData(OrderBean orderData) {
         OrderActivity.orderData = orderData;
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        /* 点击的为返回键 */
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exit();// 退出方法
+        }
+        return true;
+    }
+
+    private void exit() {
+        if (System.currentTimeMillis() - time > 2000) {
+            time = System.currentTimeMillis();
+            showToast("再点击一次退出应用程序");
+        }else{
+            this.finishAffinity();
+            System.exit(0);
+        }
+    }
+    @SuppressLint("WrongConstant")
+    public void showToast(String text) {
+        Toast.makeText(this, text, 2000).show();
     }
 }
