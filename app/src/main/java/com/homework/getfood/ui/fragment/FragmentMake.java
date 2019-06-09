@@ -44,6 +44,7 @@ import butterknife.ButterKnife;
  */
 public class FragmentMake extends Fragment implements View.OnClickListener, CartListener, UpdateListener {
 
+
     @BindView(R.id.view_type_list)
     ListView foodtypeListView;
 
@@ -67,7 +68,7 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
     private LinearLayout cardShopLayout;
     private View bg_layout;
     private TextView settlement;
-    private AdapterCart adapterCart;
+    private AdapterCart cartAdapter;
     @SuppressLint("StaticFieldLeak")
     public static TextView shoppingPrice;
 
@@ -130,47 +131,37 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
                 refreshCart();
                 break;
             case R.id.settlement: // 点击结算按钮
-                if(AppContext.getCart() == null || AppContext.getCart().isEmpty()){ // 购物车为空无法结算
+                if(AppContext.getCart().isEmpty() || AppContext.getCart() == null){ // 购物车为空无法结算
                     return;
                 }else{
                     ArrayList<FoodBean> fb = new ArrayList<FoodBean>();
                     fb.addAll(AppContext.getCart().values());
                     int num = (int) ((Math.random() * 9 + 1) * 1000); // 随机生成订单ID
+                    String s = shoppingPrice.getText().toString();
                     Integer price = Integer.parseInt(getPrice());
                     OrderBean order = new OrderBean(num, TimeFetcher.getTime(),
-                            price, fb); // 获得生成新订单
+                            price ,fb); // 获得生成新订单
                     ActivityCheck.setOrderData(order); // 设置确认界面里的订单数据
                     Intent intent=new Intent(getActivity(), ActivityCheck.class);
                     startActivity(intent); // 进入确认界面
                 }
                 break;
             case R.id.bg_layout: // 点击购物车以外的部分，则取消购物车显示
-                hideShoppingCart();
+                cardLayout.setVisibility(View.GONE);
+                bg_layout.setVisibility(View.GONE);
+                cardShopLayout.setVisibility(View.GONE);
                 break;
-
-            default:
-                hideShoppingCart();
         }
     }
-
-    /**
-     * 隐藏购物车
-     */
-    private void hideShoppingCart(){
-        cardLayout.setVisibility(View.GONE);
-        bg_layout.setVisibility(View.GONE);
-        cardShopLayout.setVisibility(View.GONE);
-    }
-
     /**
      * 更新购物车数据
      */
     @Override
     public void updateFood() {
-        adapterCart.updateData();
-        adapterCart.notifyDataSetChanged();
+        cartAdapter.updateData();
+        cartAdapter.notifyDataSetChanged();
+        //setPrice();
     }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -190,7 +181,6 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 isScroll = false;
-                hideShoppingCart();
                 for (int i = 0; i < leftStr.size(); i++) {
                     if (i == position) {
                         flagArray.set(i,true);
@@ -206,14 +196,13 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
                 pinnedListView.setSelection(rightSection);
             }
         });
-        adapterCart = new AdapterCart(getActivity(),AppContext.getCart());
-        shoppingListView.setAdapter(adapterCart);
-        adapterCart.setCartListener(this);
+        cartAdapter = new AdapterCart(getActivity(),AppContext.getCart());
+        shoppingListView.setAdapter(cartAdapter);
+        cartAdapter.setCartListener(this);
 
         pinnedListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
-                hideShoppingCart();
                 // 当不滚动时
                 if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {// 判断滚动到底部
                     if (pinnedListView.getLastVisiblePosition() == (pinnedListView.getCount() - 1)) {
@@ -271,6 +260,9 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
     public void onRemoveFood(FoodBean product) {
         AppContext.getCart().remove(product.getName());
         updateFood();
+        if (AppContext.getCart().size() == 0){
+            defaultText.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -331,7 +323,7 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
      * 更新购物车信息显示
      */
     public void refreshCart(){
-        if (AppContext.getCart() == null || AppContext.getCart().isEmpty()) {
+        if (AppContext.getCart().isEmpty() || AppContext.getCart() == null) {
             defaultText.setVisibility(View.VISIBLE);
         } else {
             defaultText.setVisibility(View.GONE);
@@ -340,10 +332,12 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
         if (cardLayout.getVisibility() == View.GONE) {
             cardLayout.setVisibility(View.VISIBLE);
             cardShopLayout.setVisibility(View.VISIBLE);
-
+            bg_layout.setVisibility(View.VISIBLE);
 
         } else {
-            hideShoppingCart();
+            cardLayout.setVisibility(View.GONE);
+            bg_layout.setVisibility(View.GONE);
+            cardShopLayout.setVisibility(View.GONE);
         }
-    }
+		}
 }
