@@ -145,16 +145,21 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
                 }
                 break;
             case R.id.bg_layout: // 点击购物车以外的部分，则取消购物车显示
-                cardLayout.setVisibility(View.GONE);
-                bg_layout.setVisibility(View.GONE);
-                cardShopLayout.setVisibility(View.GONE);
+                hideShoppingCart();
                 break;
 
             default:
-                cardLayout.setVisibility(View.GONE);
-                bg_layout.setVisibility(View.GONE);
-                cardShopLayout.setVisibility(View.GONE);
+                hideShoppingCart();
         }
+    }
+
+    /**
+     * 隐藏购物车
+     */
+    private void hideShoppingCart(){
+        cardLayout.setVisibility(View.GONE);
+        bg_layout.setVisibility(View.GONE);
+        cardShopLayout.setVisibility(View.GONE);
     }
 
     /**
@@ -185,7 +190,7 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 isScroll = false;
-
+                hideShoppingCart();
                 for (int i = 0; i < leftStr.size(); i++) {
                     if (i == position) {
                         flagArray.set(i,true);
@@ -208,6 +213,7 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
         pinnedListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
+                hideShoppingCart();
                 // 当不滚动时
                 if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {// 判断滚动到底部
                     if (pinnedListView.getLastVisiblePosition() == (pinnedListView.getCount() - 1)) {
@@ -337,9 +343,7 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
 
 
         } else {
-            cardLayout.setVisibility(View.GONE);
-            bg_layout.setVisibility(View.GONE);
-            cardShopLayout.setVisibility(View.GONE);
+            hideShoppingCart();
         }
     }
 }
