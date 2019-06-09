@@ -1,16 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_order_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OrderFragment">
+    tools:context=".ui.fragment.OrderFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/fragment_order_id"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/noOrder"
         android:layout_width="match_parent"
-        android:layout_height="594dp"
-        android:background="#FFEB3B"
-        android:text="@string/title_order_fragment" />
+        android:layout_height="match_parent"
+        tools:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp60"
+            android:scaleType="fitXY"
+            android:src="@drawable/donation"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nothing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:text="您还没有过订单哦~"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+    </android.support.constraint.ConstraintLayout>
+
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:id="@+id/orderListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
 </RelativeLayout>

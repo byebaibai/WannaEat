@@ -1,14 +1,31 @@
 package com.homework.getfood.util;
 
-import android.graphics.drawable.Drawable;
+import android.annotation.SuppressLint;
+import android.app.Application;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import com.homework.getfood.context.AppContext;
+import java.lang.reflect.Field;
 
-public class IconFetcher {
+/**
+ * 根据图片名称获得图片ID
+ */
+@SuppressLint("Registered")
+public class IconFetcher extends Application {
+    /**
+     * 根据图片名称获得图片ID
+     * @param variableName 名称
+     * @param c 类别
+     * @return ID
+     */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public static Drawable getIcon(int id){
-        return AppContext.getContext().getDrawable(id);
+    public static int getResId(String variableName, Class<?> c) {
+        try {
+            Field idField = c.getDeclaredField(variableName);
+            return idField.getInt(idField);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 }

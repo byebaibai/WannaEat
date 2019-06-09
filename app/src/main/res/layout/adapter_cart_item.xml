@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center|center_horizontal|center_vertical"
+    android:padding="@dimen/dp6">
+
+    <TextView
+        android:id="@+id/text_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp" />
+
+    <TextView
+        android:id="@+id/text_item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="false"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="152dp"
+        android:layout_toStartOf="@+id/cartSubButton" />
+
+    <ImageButton
+        android:id="@+id/cartAddButton"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/add"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp" />
+
+    <ImageButton
+        android:id="@+id/cartSubButton"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="110dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/minus"
+        android:layout_marginRight="110dp"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:id="@+id/text_item_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="66dp"
+        android:layout_marginRight="65dp" />
+</RelativeLayout>

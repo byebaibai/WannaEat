@@ -3,15 +3,16 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="colorTabSelected">#CC33FF</color>
-    <color name="colorTabIndicator">#66ff33</color>
+    <color name="colorTabSelected">#0F54FD</color>
+    <color name="colorTabIndicator">#410FFD</color>
     <color name="colorTabText">#85C1E9</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="gray_light">#EBEDF0</color>
-    <color name="user_center_divide_line">#dcdcdc</color>
+    <color name="user_center_divide_line">#DCDCDC</color>
     <color name="user_center_black_text">#313131</color>
     <color name="shopping_cart_bg">#DC5914</color>
     <color name="consumer_bg">#f3f3f3</color>
     <color name="red">#FF0000</color>
+    <color name="groupSelector">#FE9C94</color>
 </resources>

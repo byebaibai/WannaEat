@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_dialog"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="342dp"
+        android:layout_height="235dp"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp0"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/no"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="No"
+                android:textColor="#7D7D7D"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="#E4E4E4" />
+
+            <Button
+                android:id="@+id/yes"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Yes"
+                android:textColor="#38ADFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdge="horizontal"
+            tools:ignore="UnknownId">
+
+            <TextView
+                android:id="@+id/foodName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="145dp"
+                android:gravity="center"
+                android:text="大片牛肉"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/foodImage"
+                app:layout_constraintEnd_toEndOf="@+id/foodImage"
+                app:layout_constraintHorizontal_bias="0.47"
+                app:layout_constraintStart_toStartOf="@+id/foodImage" />
+
+            <ImageView
+                android:id="@+id/foodImage"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginEnd="2dp"
+                app:layout_constraintBottom_toBottomOf="@+id/foodPrice"
+                app:layout_constraintEnd_toStartOf="@+id/foodPrice"
+                tools:srcCompat="@drawable/pic" />
+
+            <ImageButton
+                android:id="@+id/addButton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="137dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="#00FFFFFF"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.369"
+                app:srcCompat="@drawable/add" />
+
+            <TextView
+                android:id="@+id/foodNum"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="25dp"
+                android:layout_marginTop="137dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@null"
+                android:ems="10"
+                android:foregroundGravity="center_vertical|center|center_horizontal"
+                android:gravity="clip_horizontal|center|center_horizontal|center_vertical"
+                android:inputType="numberDecimal"
+                android:maxLength="3"
+                android:numeric="integer"
+                android:phoneNumber="true"
+                android:saveEnabled="false"
+                android:selectAllOnFocus="false"
+                android:singleLine="true"
+                android:text="1"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/addButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.384" />
+
+            <ImageButton
+                android:id="@+id/minusButton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="137dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="#00FFFFFF"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/foodNum"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.384"
+                app:srcCompat="@drawable/minus" />
+
+            <TextView
+                android:id="@+id/foodPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="150dp"
+                android:text="20¥"
+                android:textColor="#475EDB"
+                android:textSize="16sp"
+                app:fontFamily="sans-serif"
+                app:layout_constraintBaseline_toBaselineOf="@+id/foodNum"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/text_group"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center_vertical"
+                android:text="辣椒炒肉，是以辣椒、五花肉作为主要食材，以豆豉，大蒜子，酱油，油盐，味精，生姜等作为辅料制作而成的一道菜肴。口味香辣。\n 辣椒炒肉是湖南人每家每户必吃的招牌“土菜”，是最具代表性的湘菜之一。"
+                android:textColor="#494848"
+                android:textSize="9sp"
+                app:layout_constraintBottom_toTopOf="@+id/foodNum"
+                app:layout_constraintEnd_toEndOf="@+id/addButton"
+                app:layout_constraintStart_toEndOf="@+id/foodImage"
+                app:layout_constraintTop_toBottomOf="@+id/canSpicyGroup" />
+
+            <co.ceryle.radiorealbutton.RadioRealButtonGroup
+                android:id="@+id/canSpicyGroup"
+                android:layout_width="163dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:gravity="center|fill_horizontal"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@+id/foodImage"
+                app:layout_constraintTop_toTopOf="parent"
+                app:rrbg_animateDrawables_enter="overshoot"
+                app:rrbg_animateTexts_enter="overshoot"
+                app:rrbg_dividerColor="@color/black"
+                app:rrbg_dividerSize="1dp"
+                app:rrbg_selectorColor="@color/groupSelector"
+                app:rrbg_selectorSize="3dp"
+                tools:visibility="visible">
+
+                <co.ceryle.radiorealbutton.RadioRealButton
+                    android:id="@+id/minButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/canSpicyGroup"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    app:rrb_checked="true"
+                    app:rrb_ripple="true"
+                    app:rrb_text="微辣"
+                    app:rrb_textColor="#84827F"
+                    app:rrb_textColorTo="#FBB065"
+                    app:rrb_textSize="14dp" />
+
+                <co.ceryle.radiorealbutton.RadioRealButton
+                    android:id="@+id/midButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    app:rrb_checked="false"
+                    app:rrb_ripple="true"
+                    app:rrb_text="中辣"
+                    app:rrb_textColor="#84827F"
+                    app:rrb_textColorTo="#FB8A5C"
+                    app:rrb_textSize="14dp" />
+
+                <co.ceryle.radiorealbutton.RadioRealButton
+                    android:id="@+id/maxButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/canSpicyGroup"
+                    android:layout_alignTop="@+id/canSpicyGroup"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    app:rrb_checked="false"
+                    app:rrb_ripple="true"
+                    app:rrb_text="猛辣"
+                    app:rrb_textColor="#84827F"
+                    app:rrb_textColorTo="#F9471C"
+                    app:rrb_textSize="14dp" />
+            </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+        </android.support.constraint.ConstraintLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

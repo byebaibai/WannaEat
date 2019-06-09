@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.OrderActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/paying"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="gone">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp60"
+            android:scaleType="fitXY"
+            android:src="@drawable/paying"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nothing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:text="正在免密支付中..."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/waitCheck"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="visiable">
+
+        <TextView
+            android:id="@+id/OrderDetialTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="订单详情"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/orderPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:text="¥ 20"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/sureBuy"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/origin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="原价"
+            app:layout_constraintBaseline_toBaselineOf="@+id/originPrice"
+            app:layout_constraintEnd_toStartOf="@+id/originPrice" />
+
+        <TextView
+            android:id="@+id/originPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="¥ 20"
+            android:textColor="#792B2A2A"
+            android:textSize="23sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/pay"
+            app:layout_constraintEnd_toStartOf="@+id/pay" />
+
+        <TextView
+            android:id="@+id/pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="实付"
+            android:textColor="#2E2626"
+            android:textSize="16sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/orderPrice"
+            app:layout_constraintEnd_toStartOf="@+id/orderPrice" />
+
+        <TextView
+            android:id="@+id/sureBuy"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_weight="1"
+            android:background="#14CBB4F5"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:text="确认付款"
+            android:textColor="#9FE91E1E"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ListView
+            android:id="@+id/foodListView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="54dp"
+            android:listSelector="@android:color/transparent"
+            app:layout_constraintBottom_toTopOf="@+id/orderPrice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/OrderDetialTitle" />
+
+        <ListView
+            android:id="@+id/couponListView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:divider="@null"
+            android:listSelector="@android:color/transparent"
+            app:layout_constraintBottom_toTopOf="@+id/orderPrice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/foodListView" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/paySuccess"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="gone">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/imageSuccessView"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/paysuccess"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>
