@@ -1,8 +1,7 @@
 package com.homework.getfood.context;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
-import android.content.Context;
-import android.content.res.AssetManager;
 import android.content.res.XmlResourceParser;
 
 import com.alibaba.fastjson.JSON;
@@ -14,28 +13,27 @@ import com.homework.getfood.util.JsonUtils;
 
 import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import android.util.Log;
-import java.io.FileWriter;
+
+/**
+ * 全局变量|函数
+ */
 public class AppContext extends Application {
-    private static ArrayList<FoodBean> foodData = new ArrayList<FoodBean>();
-    private static HashMap<String, FoodBean> foodMap = new HashMap<String, FoodBean>();
-    private static HashMap<String, FoodBean> cartMap = new HashMap<String, FoodBean>();
-    private static ArrayList<OrderBean> orderBeanArrayList = new ArrayList<OrderBean>();
+    private static ArrayList<FoodBean> foodData = new ArrayList<FoodBean>();  //食品数据
+    private static HashMap<String, FoodBean> foodMap = new HashMap<String, FoodBean>(); //食品数据
+    private static HashMap<String, FoodBean> cartMap = new HashMap<String, FoodBean>(); //购物车数据
+    private static ArrayList<OrderBean> orderBeanArrayList = new ArrayList<OrderBean>(); //本地订单数据
     private static int typeNum;
     private static String JsonString;
     private static AppContext mInstance;
     private static String packageName;
-    private static ArrayList<CouponBean> CouponeList;
+    private static ArrayList<CouponBean> CouponeList; //优惠券数据
     public static AppContext getContext() {
         return mInstance;
     }
@@ -59,9 +57,7 @@ public class AppContext extends Application {
     public static HashMap<String, FoodBean> getCart(){
         return cartMap;
     }
-    public static void setCart(HashMap<String, FoodBean> cmap){
-        cartMap = cmap;
-    }
+
     public static HashMap<String, FoodBean> getMap() {
         return foodMap;
     }
@@ -74,7 +70,17 @@ public class AppContext extends Application {
         CouponeList = new ArrayList<CouponBean>();
         CouponeList.add(new CouponBean(0));
         CouponeList.add(new CouponBean(1));
-        CouponeList.add(new CouponBean(2));
+        CouponeList.add(new CouponBean(2)); //添加三种优惠券
+        getFoodData();
+        JsonString = getJson();
+        List<OrderBean> ob = JSON.parseArray(JsonString,OrderBean.class); //获得本地订单列表
+        orderBeanArrayList = new ArrayList<OrderBean>(ob);
+    }
+
+    /**
+     * 获得本地食品数据
+     */
+    private void getFoodData(){
         XmlResourceParser xrp = getResources().getXml(R.xml.food);
         try {
             //还没有到XML文档的结尾处
@@ -112,15 +118,14 @@ public class AppContext extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        JsonString = getJson("OrderData.json");
-        List<OrderBean> ob = JSON.parseArray(JsonString,OrderBean.class);
-        orderBeanArrayList = new ArrayList<OrderBean>(ob);
-        System.out.println(orderBeanArrayList.size());
     }
-
-    private String getJson(String fileName){
+    /**
+     * 读取本地订单数据
+     * @return 本地订单数据
+     */
+    private String getJson(){
         try {
-            File f = new File("/data/data/" + getPackageName() + "/" + fileName);
+            @SuppressLint("SdCardPath") File f = new File("/data/data/" + getPackageName() + "/" + "OrderData.json");
             FileInputStream is = new FileInputStream(f);
             int size = is.available();
             byte[] buffer = new byte[size];
@@ -129,64 +134,67 @@ public class AppContext extends Application {
             String mResponse = new String(buffer);
             return mResponse;
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             return "[]";
         }
     }
+
+    /**
+     * 加入新的订单数据，同时保存在本地文件中
+     * @param ob 新的订单数据
+     */
     public static void updateOrder(OrderBean ob){
-        String s = JsonUtils.parseObjToJson(ob);
+        String s = JsonUtils.parseObjToJson(ob); //将订单资料转化为Json字符串
         orderBeanArrayList.add(ob);
-//        System.out.println(JsonString);
         if(orderBeanArrayList.size() == 0){
             JsonString = "[" + s +  "]";
         }else {
             int last = JsonString.lastIndexOf("]");
             JsonString = JsonString.substring(0, last) + "," + s + "]";
         }
-//        System.out.println(JsonString);
-//        List<OrderBean> obList = JSON.parseArray(JsonString,OrderBean.class);
-//        orderBeanArrayList = new ArrayList<OrderBean>(obList);
-//        System.out.println(orderBeanArrayList.size());
-//        System.out.println(s);
         try {
-            FileWriter file = new FileWriter("/data/data/" +  packageName + "/" + "OrderData.json");
+            @SuppressLint("SdCardPath") FileWriter file = new FileWriter("/data/data/" +  packageName + "/" + "OrderData.json");
             file.write(JsonString);
             file.flush();
             file.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+
         }
     }
+
+    /**
+     * 删除某订单后，更新本地订单数据
+     */
     public static void updateRemove(){
-        String s = JSON.toJSONString(orderBeanArrayList);
-        JsonString = s;
+        JsonString = JSON.toJSONString(orderBeanArrayList); //将订单资料转化为Json字符串
         try {
-            FileWriter file = new FileWriter("/data/data/" +  packageName + "/" + "OrderData.json");
+            @SuppressLint("SdCardPath") FileWriter file = new FileWriter("/data/data/" +  packageName + "/" + "OrderData.json");
             file.write(JsonString);
             file.flush();
             file.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+
         }
     }
 
-    public static ArrayList<CouponBean> getCouponeList() {
-        return CouponeList;
-    }
-
-    public static void setCouponeList(ArrayList<CouponBean> couponeList) {
-        CouponeList = couponeList;
-    }
-
+    /**
+     * 根据商品总价格和商品中是否含有套餐返回商品可用的优惠券
+     * @param price 商品总价格
+     * @param isGroup 商品中是否含套餐
+     * @return 可以使用的优惠券
+     */
     public static ArrayList<CouponBean> getCouponeList(Integer price,Boolean isGroup) {
         ArrayList<CouponBean> cp = new ArrayList<CouponBean>();
         if (isGroup) return cp;
         if(price < 100) return cp;
-        else if(price >= 100 && price < 200){
+        else if(price < 200){
             cp.add(CouponeList.get(0));
             return cp;
-        }else if(price >= 200 && price < 300){
+        }else if(price < 300){
             cp.add(CouponeList.get(0));
             cp.add(CouponeList.get(1));
             return cp;
@@ -196,7 +204,5 @@ public class AppContext extends Application {
             return cp;
         }
     }
-//    public static Integer getAfterCoupon(ArrayList<CouponBean> cp, Integer value){
-//
-//    }
+
 }

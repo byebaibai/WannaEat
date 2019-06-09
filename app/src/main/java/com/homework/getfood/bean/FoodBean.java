@@ -1,17 +1,19 @@
 package com.homework.getfood.bean;
 
+/**
+ * 食物 类
+ */
 public class FoodBean{
-
-	private int id;
-	private String name;//名
-	private Integer price;//价格
-	private String type;//类
-	private String icon;//图片
-	private Boolean isSpicy;
-	private int typeID;
-	private Integer cartNum;
-	private String detail;
-	private Boolean isGroup;
+	private int id; //食物ID
+	private String name;//食物名称
+	private Integer price;//食物价格
+	private String type;//食物类别
+	private String icon;//食物图片
+	private Boolean isSpicy; //食物是否辣
+	private int typeID; //种类ID
+	private Integer cartNum; //购物车内数目
+	private String detail; //食物描述
+	private Boolean isGroup; //是否为套餐
 	public FoodBean(){
 
 	}
@@ -47,21 +49,10 @@ public class FoodBean{
 		return detail;
 	}
 
-	public void setDetail(String detail) {
-		this.detail = detail;
-	}
-
-	public void setGroup(Boolean group) {
-		isGroup = group;
-	}
-
 	public Boolean getSpicy() {
 		return isSpicy;
 	}
 
-	public void setSpicy(Boolean spicy) {
-		isSpicy = spicy;
-	}
 
 	public Integer getCartNum() {
 		return cartNum;
@@ -96,10 +87,6 @@ public class FoodBean{
 		return name;
 	}
 
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
-
 	public String getType() {
 		return type;
 	}
@@ -112,16 +99,32 @@ public class FoodBean{
 		this.name = name;
 	}
 
-	public void setPrice(Integer price) {
-		this.price = price;
+	public void setGroup(Boolean group) {
+		isGroup = group;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
 
 	public void setType(String type) {
 		this.type = type;
 	}
 
+	public void setSpicy(Boolean spicy) {
+		isSpicy = spicy;
+	}
+
 	public void setTypeID(int typeID) {
 		this.typeID = typeID;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
 }

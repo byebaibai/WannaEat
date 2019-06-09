@@ -1,12 +1,15 @@
 package com.homework.getfood.util;
 
-import android.text.format.Time;
-
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
+/**
+ * 获得当前时间
+ */
 public class TimeFetcher {
+    /**
+     * 获得当前时间
+     * @return 返回当前时间
+     */
     public static String getTime(){
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);

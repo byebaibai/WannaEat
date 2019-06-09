@@ -30,5 +30,5 @@
     <food id="27" typeID="5" type="清凉饮品" price="30" imageURL="watermelonjuice" spicy="0" group="0" detail="西瓜汁是以西瓜为原经过物理方法如压榨、离心、萃取等得到的汁液产品料，具有解暑功效。口味清甜细腻，冰镇之后口感更好，夏季倍受人青睐。">西瓜汁</food>
     <food id="28" typeID="6" type="精选套餐" price="45" imageURL="group1" spicy="1" group="1" detail="辣椒炒肉×1\n米饭×1\n(雪碧或可乐)×1\n  (套餐订单无法享受优惠券优惠)">单人精选套餐</food>
     <food id="29" typeID="6" type="精选套餐" price="80" imageURL="group2" spicy="1" group="1" detail="香辣土豆丝×1\n辣椒炒肉×1\n皮蛋擂辣椒×1\n米饭×3\n(雪碧或可乐)×2\n  (套餐订单无法享受优惠券优惠)">双人绝配套餐</food>
-    <food id="30" typeID="6" type="精选套餐" price="210" imageURL="group3" spicy="1" group="1" detail="香辣牛蛙×1   香辣土豆丝×1\n辣椒炒肉×1   排骨冬瓜汤×1\n皮蛋擂辣椒×1   麻酱油麦菜×1\n糖油粑粑×2\n米饭×5\n(雪碧或可乐)×5\n  套餐订单无法享受优惠券优惠)">缤纷多人套餐</food>
+    <food id="30" typeID="6" type="精选套餐" price="210" imageURL="group3" spicy="1" group="1" detail="香辣牛蛙×1   香辣土豆丝×1\n辣椒炒肉×1   排骨冬瓜汤×1\n皮蛋擂辣椒×1   麻酱油麦菜×1\n糖油粑粑×2\n米饭×5\n(雪碧或可乐)×5\n  (套餐订单无法享受优惠券优惠)">缤纷多人套餐</food>
 </foods>
