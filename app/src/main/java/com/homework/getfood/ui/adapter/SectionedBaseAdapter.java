@@ -7,7 +7,7 @@ import android.widget.BaseAdapter;
 
 import com.homework.getfood.util.PinnedHeaderListView;
 
-public abstract class AdapterSectionedBase extends BaseAdapter implements PinnedHeaderListView.PinnedSectionedHeaderAdapter {
+public abstract class SectionedBaseAdapter extends BaseAdapter implements PinnedHeaderListView.PinnedSectionedHeaderAdapter {
 
     private static int HEADER_VIEW_TYPE = 0;
     private static int ITEM_VIEW_TYPE = 0;
@@ -34,7 +34,7 @@ public abstract class AdapterSectionedBase extends BaseAdapter implements Pinned
      */
     private int mSectionCount;
 
-    public AdapterSectionedBase() {
+    public SectionedBaseAdapter() {
         super();
         mSectionCache = new SparseArray<Integer>();
         mSectionPositionCache = new SparseArray<Integer>();

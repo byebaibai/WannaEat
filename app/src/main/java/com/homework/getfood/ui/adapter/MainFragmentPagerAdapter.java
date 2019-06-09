@@ -5,22 +5,22 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.homework.getfood.ui.fragment.FragmentMake;
-import com.homework.getfood.ui.fragment.FragmentOrder;
+import com.homework.getfood.ui.fragment.MakeFragment;
+import com.homework.getfood.ui.fragment.OrderFragment;
 import com.homework.getfood.R;
 import com.homework.getfood.util.StringFetcher;
 
-public class AdapterMainFragmentPager extends FragmentPagerAdapter {
+public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
     private String[] mTitles = new String[]{StringFetcher.getString(R.string.title_home), StringFetcher.getString(R.string.title_orders)};
 
-    public AdapterMainFragmentPager(FragmentManager fm){
+    public MainFragmentPagerAdapter(FragmentManager fm){
         super(fm);
     }
 
     @Override
     public Fragment getItem(int i) {
-        if (i == 1) return new FragmentOrder();
-        else return new FragmentMake();
+        if (i == 1) return new OrderFragment();
+        else return new MakeFragment();
     }
 
     @Override

@@ -18,12 +18,12 @@ import java.util.ArrayList;
 /**
  * 订单详情页中食物的ListView的Adapter
  */
-public class AdapterOrderFood extends BaseAdapter {
+public class OrderFoodAdapter extends BaseAdapter {
     private ArrayList<FoodBean> foodList;
     private LayoutInflater mInflater;
     private Context mContext;
 
-    public AdapterOrderFood(Context context, ArrayList<FoodBean> list){
+    public OrderFoodAdapter(Context context, ArrayList<FoodBean> list){
         mContext = context;
         mInflater = LayoutInflater.from(context);
         foodList = list;

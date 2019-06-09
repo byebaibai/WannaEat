@@ -15,12 +15,12 @@ import java.util.ArrayList;
 /**
  * 食物类别ListView的Adapter
  */
-public class AdapterFoodTypeList extends BaseAdapter {
+public class FoodTypeListAdapter extends BaseAdapter {
     private ArrayList<String> leftStr;
     ArrayList<Boolean> flagArray;
     private Context context;
 
-    public AdapterFoodTypeList(Context context, ArrayList<String> leftStr, ArrayList<Boolean> flagArray) {
+    public FoodTypeListAdapter(Context context, ArrayList<String> leftStr, ArrayList<Boolean> flagArray) {
         this.leftStr = leftStr;
         this.context = context;
         this.flagArray = flagArray;

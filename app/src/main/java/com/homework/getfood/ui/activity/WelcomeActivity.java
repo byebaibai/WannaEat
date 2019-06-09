@@ -13,7 +13,7 @@ import com.homework.getfood.R;
 /**
  * 欢迎页面
  */
-public class ActivityWelcome extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
     private long time = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class ActivityWelcome extends AppCompatActivity {
      * 进入点餐页面
      */
     public void finish() {
-        startActivity(new Intent(this, ActivityMain.class));
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override

@@ -10,10 +10,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.homework.getfood.ui.adapter.AdapterCoupon;
-import com.homework.getfood.ui.adapter.AdapterOrderFood;
-import com.homework.getfood.ui.fragment.FragmentMake;
-import com.homework.getfood.ui.fragment.FragmentOrder;
+import com.homework.getfood.ui.adapter.CouponAdapter;
+import com.homework.getfood.ui.adapter.OrderFoodAdapter;
+import com.homework.getfood.ui.fragment.MakeFragment;
+import com.homework.getfood.ui.fragment.OrderFragment;
 import com.homework.getfood.R;
 import com.homework.getfood.bean.OrderBean;
 import com.homework.getfood.context.AppContext;
@@ -26,11 +26,11 @@ import butterknife.ButterKnife;
 /**
  * 订单详情页的Activity
  */
-public class ActivityOrder extends AppCompatActivity {
+public class OrderActivity extends AppCompatActivity {
     private static OrderBean orderData;
-    private AdapterOrderFood adapterOrderFood;
+    private OrderFoodAdapter orderFoodAdapter;
     private long time = 0;
-    private AdapterCoupon adapterCoupon;
+    private CouponAdapter couponAdapter;
     @BindView(R.id.orderTime)
     TextView orderTime;
     @BindView(R.id.orderID)
@@ -58,38 +58,38 @@ public class ActivityOrder extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void initView(){
         Integer price = orderData.getOrderPrice(); // 获得订单的未优惠之后的价格
-        adapterCoupon = new AdapterCoupon(this, AppContext.getCouponeList(price,orderData.getHasGroup()),price,orderData.getHasGroup());
-        couponlistview.setAdapter(adapterCoupon);
+        couponAdapter = new CouponAdapter(this, AppContext.getCouponeList(price,orderData.getHasGroup()),price,orderData.getHasGroup());
+        couponlistview.setAdapter(couponAdapter);
         orderTime.setText(orderData.getOrderTime());
         orderID.setText(orderData.getOrderID().toString());
-        adapterOrderFood = new AdapterOrderFood(this,orderData.getOrderFoodList());
-        orderFoodListView.setAdapter(adapterOrderFood);
-        Integer afterCoupon = price - adapterCoupon.getMinusTotal(); // 使用优惠券之后的价格
+        orderFoodAdapter = new OrderFoodAdapter(this,orderData.getOrderFoodList());
+        orderFoodListView.setAdapter(orderFoodAdapter);
+        Integer afterCoupon = price - couponAdapter.getMinusTotal(); // 使用优惠券之后的价格
         orderPrice.setText("¥ " + afterCoupon);
         originPrice.setText("¥ " + price);
         buyBuy.setOnClickListener(new View.OnClickListener() { // 到订餐页面
             @Override
             public void onClick(View v) {
-                FragmentOrder of = ActivityMain.getFragment_order();
-                FragmentMake mf = ActivityMain.getFragment_make();
+                OrderFragment of = MainActivity.getFragment_order();
+                MakeFragment mf = MainActivity.getFragment_make();
                 if (mf != null) mf.refreshCart();
                 if (of != null) of.notifyData();
                 else System.out.println("None");
-                Intent intent = new Intent(ActivityOrder.this, ActivityMain.class);
-                ActivityMain.setViewPagerID(0);
+                Intent intent = new Intent(OrderActivity.this, MainActivity.class);
+                MainActivity.setViewPagerID(0);
                 startActivity(intent);
             }
         });
         orderOrder.setOnClickListener(new View.OnClickListener() { // 到订单页面
             @Override
             public void onClick(View v) {
-                FragmentOrder of = ActivityMain.getFragment_order();
-                FragmentMake mf = ActivityMain.getFragment_make();
+                OrderFragment of = MainActivity.getFragment_order();
+                MakeFragment mf = MainActivity.getFragment_make();
                 if (mf != null) mf.refreshCart();
                 if (of != null) of.notifyData();
                 else System.out.println("None");
-                Intent intent = new Intent(ActivityOrder.this, ActivityMain.class);
-                ActivityMain.setViewPagerID(1);
+                Intent intent = new Intent(OrderActivity.this, MainActivity.class);
+                MainActivity.setViewPagerID(1);
                 startActivity(intent);
             }
         });
@@ -100,7 +100,7 @@ public class ActivityOrder extends AppCompatActivity {
      * @param orderData 需要显示订单数据
      */
     public static void setOrderData(OrderBean orderData) {
-        ActivityOrder.orderData = orderData;
+        OrderActivity.orderData = orderData;
     }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

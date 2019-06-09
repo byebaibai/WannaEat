@@ -12,18 +12,18 @@ import android.widget.TextView;
 import com.homework.getfood.R;
 import com.homework.getfood.bean.OrderBean;
 import com.homework.getfood.context.AppContext;
-import com.homework.getfood.ui.activity.ActivityOrder;
+import com.homework.getfood.ui.activity.OrderActivity;
 
 import java.util.ArrayList;
 
 /**
  * 订单页面订单ListView的Adapter
  */
-public class AdapterOrder extends BaseAdapter{
+public class OrderAdapter extends BaseAdapter{
     public ArrayList<OrderBean> orderList;
     private LayoutInflater mInflater;
     private Context mContext;
-    public AdapterOrder(Context context){
+    public OrderAdapter(Context context){
         mContext = context;
         mInflater = LayoutInflater.from(context);
         orderList = AppContext.getOrderBeanArrayList();
@@ -75,8 +75,8 @@ public class AdapterOrder extends BaseAdapter{
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mContext, ActivityOrder.class);
-                ActivityOrder.setOrderData(orderList.get(position));
+                Intent intent=new Intent(mContext, OrderActivity.class);
+                OrderActivity.setOrderData(orderList.get(position));
                 mContext.startActivity(intent);
             }
         });

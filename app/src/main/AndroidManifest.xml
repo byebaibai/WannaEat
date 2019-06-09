@@ -11,15 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activity.ActivityCheck"
-            android:parentActivityName=".ui.activity.ActivityMain">
+            android:name=".ui.activity.CheckActivity"
+            android:parentActivityName=".ui.activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.activity.ActivityMain" />
+                android:value=".ui.activity.MainActivity" />
         </activity>
-        <activity android:name=".ui.activity.ActivityOrder" />
+        <activity android:name=".ui.activity.OrderActivity" />
         <activity
-            android:name=".ui.activity.ActivityWelcome"
+            android:name=".ui.activity.WelcomeActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.ActivityMain"
+            android:name=".ui.activity.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />

@@ -14,9 +14,8 @@ import android.widget.TextView;
 import com.homework.getfood.R;
 import com.homework.getfood.bean.FoodBean;
 import com.homework.getfood.context.AppContext;
-import com.homework.getfood.ui.adapter.AdapterSectionedBase;
-import com.homework.getfood.ui.dialog.DialogDetail;
-import com.homework.getfood.ui.fragment.FragmentMake;
+import com.homework.getfood.ui.dialog.DetailDialog;
+import com.homework.getfood.ui.fragment.MakeFragment;
 import com.homework.getfood.util.IconFetcher;
 import com.homework.getfood.util.UpdateListener;
 
@@ -26,21 +25,21 @@ import java.util.HashMap;
 /**
  * 食物ListView的Adapter
  */
-public class AdapterSectionedBaseFoodList extends AdapterSectionedBase {
+public class SectionedBaseFoodListAdapter extends SectionedBaseAdapter {
 
     private Context mContext;
     private ArrayList<String> leftStr;
     private ArrayList<ArrayList<String>> rightStr;
     private HashMap<String,FoodBean> foodMap;
     private HashMap<String,FoodBean> cartMap;
-    private DialogDetail dialogDetail;
+    private DetailDialog detailDialog;
 
     private UpdateListener callBackListener;
 
     public void setCallBackListener(UpdateListener callBackListener) {
         this.callBackListener = callBackListener;
     }
-    public AdapterSectionedBaseFoodList(Context context, ArrayList<String> leftStr, ArrayList<ArrayList<String>> rightStr, HashMap<String,FoodBean> foodmap) {
+    public SectionedBaseFoodListAdapter(Context context, ArrayList<String> leftStr, ArrayList<ArrayList<String>> rightStr, HashMap<String,FoodBean> foodmap) {
         this.foodMap = foodmap;
         this.mContext = context;
         this.leftStr = leftStr;
@@ -89,15 +88,15 @@ public class AdapterSectionedBaseFoodList extends AdapterSectionedBase {
             @Override
             public void onClick(View arg0) {
                 final Context context = arg0.getContext();
-                dialogDetail = new DialogDetail(arg0.getContext(),iconID);
-                dialogDetail.setInfo(fb.getName(),fb.getPrice().toString(),fb.getSpicy(),fb.getDetail());
-                dialogDetail.setYesOnclickListener("确定", new DialogDetail.onYesOnclickListener() {
+                detailDialog = new DetailDialog(arg0.getContext(),iconID);
+                detailDialog.setInfo(fb.getName(),fb.getPrice().toString(),fb.getSpicy(),fb.getDetail());
+                detailDialog.setYesOnclickListener("确定", new DetailDialog.onYesOnclickListener() {
                     @Override
                     public void onYesClick() { // 确认将商品加入购物车
-                        Integer num = dialogDetail.getInfo();
+                        Integer num = detailDialog.getInfo();
                         if (num == 0) num ++;
                         FoodBean newItem = new FoodBean(fb.getId(),fb.getTypeID(),fb.getType(),fb.getName(),fb.getPrice(),fb.getIcon(),num,fb.getGroup(),fb.getDetail());
-                        if (fb.getSpicy()) newItem.setName(fb.getName() + DialogDetail.getSpicy());
+                        if (fb.getSpicy()) newItem.setName(fb.getName() + DetailDialog.getSpicy());
                         if (!cartMap.containsKey(newItem.getName())) cartMap.put(newItem.getName(),newItem);
                         else{
                             FoodBean temp = cartMap.get(newItem.getName());
@@ -109,17 +108,17 @@ public class AdapterSectionedBaseFoodList extends AdapterSectionedBase {
                         if (callBackListener != null) {
                             callBackListener.updateFood();
                         }
-                        dialogDetail.dismiss();
+                        detailDialog.dismiss();
                         setPrice();
                     }
                 });
-                dialogDetail.setNoOnclickListener("取消", new DialogDetail.onNoOnclickListener() {
+                detailDialog.setNoOnclickListener("取消", new DetailDialog.onNoOnclickListener() {
                     @Override
                     public void onNoClick() {
-                        dialogDetail.dismiss();
+                        detailDialog.dismiss();
                     }
                 });
-                dialogDetail.show();
+                detailDialog.show();
             }
         });
         return layout;
@@ -153,16 +152,16 @@ public class AdapterSectionedBaseFoodList extends AdapterSectionedBase {
         }
 
         if (foodSum > 0){
-            FragmentMake.shoppingNum.setVisibility(View.VISIBLE);
+            MakeFragment.shoppingNum.setVisibility(View.VISIBLE);
         }else{
-            FragmentMake.shoppingNum.setVisibility(View.GONE);
+            MakeFragment.shoppingNum.setVisibility(View.GONE);
         }
         if (priceSum > 0){
-            FragmentMake.shoppingPrice.setVisibility(View.VISIBLE);
+            MakeFragment.shoppingPrice.setVisibility(View.VISIBLE);
         }else{
-            FragmentMake.shoppingPrice.setVisibility(View.GONE);
+            MakeFragment.shoppingPrice.setVisibility(View.GONE);
         }
-        FragmentMake.shoppingPrice.setText(priceSum.toString() + "  ¥");
-        FragmentMake.shoppingNum.setText(foodSum.toString());
+        MakeFragment.shoppingPrice.setText(priceSum.toString() + "  ¥");
+        MakeFragment.shoppingNum.setText(foodSum.toString());
     }
 }

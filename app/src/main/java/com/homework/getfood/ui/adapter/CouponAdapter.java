@@ -16,13 +16,13 @@ import java.util.ArrayList;
 /**
  * 优惠券ListView的Adapter
  */
-public class AdapterCoupon extends BaseAdapter {
+public class CouponAdapter extends BaseAdapter {
     public ArrayList<CouponBean> couponBeanArrayList; // 可使用的优惠券列表
     private Integer minusTotal; // 使用优惠券后减去的价格
     private LayoutInflater mInflater;
     private Context mContext;
     private Integer totalCost;
-    public AdapterCoupon(Context context, ArrayList<CouponBean> coupon, Integer totalCost, Boolean isGroup){
+    public CouponAdapter(Context context, ArrayList<CouponBean> coupon, Integer totalCost, Boolean isGroup){
         mContext = context;
         mInflater = LayoutInflater.from(context);
         couponBeanArrayList = coupon;
@@ -54,15 +54,15 @@ public class AdapterCoupon extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         this.notifyDataSetChanged();
-        final AdapterCoupon.ViewHolder viewHolder;
+        final CouponAdapter.ViewHolder viewHolder;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.adapter_coupon_item,null);
-            viewHolder = new AdapterCoupon.ViewHolder();
+            viewHolder = new CouponAdapter.ViewHolder();
             viewHolder.couponName = (TextView) convertView.findViewById(R.id.couponName);
             viewHolder.couponCost = (TextView) convertView.findViewById(R.id.minusCost);
             convertView.setTag(viewHolder);
         } else{
-            viewHolder = (AdapterCoupon.ViewHolder) convertView.getTag();
+            viewHolder = (CouponAdapter.ViewHolder) convertView.getTag();
         }
         viewHolder.couponName.setText(couponBeanArrayList.get(position).getName());
         viewHolder.couponCost.setText(couponBeanArrayList.get(position).getCost(totalCost).toString());

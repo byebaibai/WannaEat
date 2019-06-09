@@ -17,8 +17,8 @@ import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.homework.getfood.R;
 import com.homework.getfood.context.AppContext;
-import com.homework.getfood.ui.activity.ActivityMain;
-import com.homework.getfood.ui.adapter.AdapterOrder;
+import com.homework.getfood.ui.activity.MainActivity;
+import com.homework.getfood.ui.adapter.OrderAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,8 +27,8 @@ import butterknife.ButterKnife;
 /**
  * 历史订单Fragment
  */
-public class FragmentOrder extends Fragment {
-    public AdapterOrder adapterOrder;
+public class OrderFragment extends Fragment {
+    public OrderAdapter orderAdapter;
 
     private View rootView;
 
@@ -47,12 +47,12 @@ public class FragmentOrder extends Fragment {
         ButterKnife.bind(this,rootView);
         initView();
         refreshView();
-        ActivityMain.setFragment_order(this);
+        MainActivity.setFragment_order(this);
         return rootView;
     }
     private void initView(){
-        adapterOrder = new AdapterOrder(getActivity());
-        orderListview.setAdapter(adapterOrder);
+        orderAdapter = new OrderAdapter(getActivity());
+        orderListview.setAdapter(orderAdapter);
         addSwipeMenu();
     }
 
@@ -81,7 +81,7 @@ public class FragmentOrder extends Fragment {
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                 if (index == 0) {
                     AppContext.getOrderBeanArrayList().remove(position); //从订单列表上删除这一订单
-                    adapterOrder.notifyDataSetChanged();
+                    orderAdapter.notifyDataSetChanged();
                     AppContext.updateRemove(); //更新本地的订单数据
                     refreshView();
                 }
@@ -127,6 +127,6 @@ public class FragmentOrder extends Fragment {
      */
     public void notifyData() {
         refreshView();
-        adapterOrder.notifyDataSetChanged();
+        orderAdapter.notifyDataSetChanged();
     }
 }

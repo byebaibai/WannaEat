@@ -18,7 +18,7 @@ import co.ceryle.radiorealbutton.RadioRealButtonGroup;
 /**
  * 商品确认 单元
  */
-public class DialogDetail extends Dialog {
+public class DetailDialog extends Dialog {
     final private static String[] spicyDegreeString = new String[]{"(微辣)","(中辣)", "(猛辣)"}; //辣度
     private static int spicyDegreeID = 0; //辣度Id
     private Button yesButton;
@@ -42,7 +42,7 @@ public class DialogDetail extends Dialog {
     private TextView foodDetail; //食物描述
     private String detailString;
     private Context mContext;
-    public DialogDetail(Context context,int imageId) {
+    public DetailDialog(Context context, int imageId) {
         super(context, R.style.DetailDialog);
         spicyDegreeID = 0;
         mContext = context;

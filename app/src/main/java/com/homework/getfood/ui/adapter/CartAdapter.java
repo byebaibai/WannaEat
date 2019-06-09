@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.homework.getfood.util.CartListener;
-import com.homework.getfood.ui.fragment.FragmentMake;
+import com.homework.getfood.ui.fragment.MakeFragment;
 import com.homework.getfood.R;
 import com.homework.getfood.bean.FoodBean;
 import com.homework.getfood.context.AppContext;
@@ -21,7 +21,7 @@ import java.util.HashMap;
 /**
  * 购物车ListView的Adapter
  */
-public class AdapterCart extends BaseAdapter {
+public class CartAdapter extends BaseAdapter {
 
     private ArrayList<FoodBean> foodList; //购物车内的食品数据
     private LayoutInflater mInflater;
@@ -30,7 +30,7 @@ public class AdapterCart extends BaseAdapter {
         this.cartListener = callBackListener;
     }
 
-    public AdapterCart(Context context, HashMap<String, FoodBean> foodProducts){
+    public CartAdapter(Context context, HashMap<String, FoodBean> foodProducts){
         mInflater = LayoutInflater.from(context);
         foodList  = new ArrayList<FoodBean>();
         foodList.addAll(foodProducts.values());
@@ -42,7 +42,7 @@ public class AdapterCart extends BaseAdapter {
     public void updateData(){
         foodList = new ArrayList<FoodBean>();
         foodList.addAll(AppContext.getCart().values());
-        FragmentMake.setPrice();
+        MakeFragment.setPrice();
         this.notifyDataSetChanged();
     }
     @Override

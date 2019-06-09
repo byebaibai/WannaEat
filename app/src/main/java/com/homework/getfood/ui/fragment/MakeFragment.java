@@ -18,18 +18,18 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.homework.getfood.ui.activity.CheckActivity;
 import com.homework.getfood.util.CartListener;
-import com.homework.getfood.ui.adapter.AdapterSectionedBaseFoodList;
+import com.homework.getfood.ui.adapter.SectionedBaseFoodListAdapter;
 import com.homework.getfood.util.PinnedHeaderListView;
 import com.homework.getfood.R;
 import com.homework.getfood.util.UpdateListener;
 import com.homework.getfood.bean.FoodBean;
 import com.homework.getfood.bean.OrderBean;
 import com.homework.getfood.context.AppContext;
-import com.homework.getfood.ui.activity.ActivityCheck;
-import com.homework.getfood.ui.activity.ActivityMain;
-import com.homework.getfood.ui.adapter.AdapterCart;
-import com.homework.getfood.ui.adapter.AdapterFoodTypeList;
+import com.homework.getfood.ui.activity.MainActivity;
+import com.homework.getfood.ui.adapter.CartAdapter;
+import com.homework.getfood.ui.adapter.FoodTypeListAdapter;
 import com.homework.getfood.util.TimeFetcher;
 
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ import butterknife.ButterKnife;
 /**
  * 点餐页面Fragment
  */
-public class FragmentMake extends Fragment implements View.OnClickListener, CartListener, UpdateListener {
+public class MakeFragment extends Fragment implements View.OnClickListener, CartListener, UpdateListener {
 
 
     @BindView(R.id.view_type_list)
@@ -52,7 +52,7 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
     PinnedHeaderListView pinnedListView;
 
     private boolean isScroll = true;
-    private AdapterFoodTypeList adapter;
+    private FoodTypeListAdapter adapter;
 
     private ArrayList<String> leftStr;
     private ArrayList<Boolean> flagArray;
@@ -68,14 +68,14 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
     private LinearLayout cardShopLayout;
     private View bg_layout;
     private TextView settlement;
-    private AdapterCart cartAdapter;
+    private CartAdapter cartAdapter;
     @SuppressLint("StaticFieldLeak")
     public static TextView shoppingPrice;
 
     @SuppressLint("StaticFieldLeak")
     public static TextView shoppingNum;
 
-    public FragmentMake() {
+    public MakeFragment() {
     }
 
     @Override
@@ -90,7 +90,7 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
         rightStr = new ArrayList<ArrayList<String>>();
         flagArray = new ArrayList<Boolean>();
         boolean Flag = true;
-        for (int i = 1; i<= AppContext.getTypeNum(); i++){
+        for (int i = 1; i<= AppContext.getTypeNum(); i++){ // 设置食物列表
             if (i == 1) flagArray.add(true);
             else flagArray.add(false);
             ArrayList<String> temp = new ArrayList<String>();
@@ -141,8 +141,8 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
                     Integer price = Integer.parseInt(getPrice());
                     OrderBean order = new OrderBean(num, TimeFetcher.getTime(),
                             price ,fb); // 获得生成新订单
-                    ActivityCheck.setOrderData(order); // 设置确认界面里的订单数据
-                    Intent intent=new Intent(getActivity(), ActivityCheck.class);
+                    CheckActivity.setOrderData(order); // 设置确认界面里的订单数据
+                    Intent intent=new Intent(getActivity(), CheckActivity.class);
                     startActivity(intent); // 进入确认界面
                 }
                 break;
@@ -167,15 +167,15 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ActivityMain.setFragment_make(this);
+        MainActivity.setFragment_make(this);
         rootView = inflater.inflate(R.layout.fragment_make, container, false);
         initView();
         pinnedListView = rootView.findViewById(R.id.view_pinned_list);
         ButterKnife.bind(this, rootView);
-        final AdapterSectionedBaseFoodList sectionedAdapter = new AdapterSectionedBaseFoodList(rootView.getContext(), leftStr, rightStr, foodMap);
+        final SectionedBaseFoodListAdapter sectionedAdapter = new SectionedBaseFoodListAdapter(rootView.getContext(), leftStr, rightStr, foodMap);
         sectionedAdapter.setCallBackListener(this);
         pinnedListView.setAdapter(sectionedAdapter);
-        adapter = new AdapterFoodTypeList(rootView.getContext(), leftStr, flagArray);
+        adapter = new FoodTypeListAdapter(rootView.getContext(), leftStr, flagArray);
         foodtypeListView.setAdapter(adapter);
         foodtypeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -196,7 +196,7 @@ public class FragmentMake extends Fragment implements View.OnClickListener, Cart
                 pinnedListView.setSelection(rightSection);
             }
         });
-        cartAdapter = new AdapterCart(getActivity(),AppContext.getCart());
+        cartAdapter = new CartAdapter(getActivity(),AppContext.getCart());
         shoppingListView.setAdapter(cartAdapter);
         cartAdapter.setCartListener(this);
 

@@ -12,7 +12,7 @@ import android.widget.HeaderViewListAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.homework.getfood.ui.adapter.AdapterSectionedBase;
+import com.homework.getfood.ui.adapter.SectionedBaseAdapter;
 
 /**
  * 双联动ListView -> 类似点餐外卖
@@ -185,12 +185,12 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
     public static abstract class OnItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int rawPosition, long id) {
-            AdapterSectionedBase adapter;
+            SectionedBaseAdapter adapter;
             if (adapterView.getAdapter().getClass().equals(HeaderViewListAdapter.class)) {
                 HeaderViewListAdapter wrapperAdapter = (HeaderViewListAdapter) adapterView.getAdapter();
-                adapter = (AdapterSectionedBase) wrapperAdapter.getWrappedAdapter();
+                adapter = (SectionedBaseAdapter) wrapperAdapter.getWrappedAdapter();
             } else {
-                adapter = (AdapterSectionedBase) adapterView.getAdapter();
+                adapter = (SectionedBaseAdapter) adapterView.getAdapter();
             }
             int section = adapter.getSectionForPosition(rawPosition);
             int position = adapter.getPositionInSectionForPosition(rawPosition);

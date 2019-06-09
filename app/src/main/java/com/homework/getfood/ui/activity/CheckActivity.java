@@ -12,9 +12,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.homework.getfood.ui.adapter.AdapterCoupon;
-import com.homework.getfood.ui.adapter.AdapterOrderFood;
-import com.homework.getfood.ui.fragment.FragmentMake;
+import com.homework.getfood.ui.adapter.CouponAdapter;
+import com.homework.getfood.ui.adapter.OrderFoodAdapter;
+import com.homework.getfood.ui.fragment.MakeFragment;
 import com.homework.getfood.R;
 import com.homework.getfood.bean.OrderBean;
 import com.homework.getfood.context.AppContext;
@@ -25,12 +25,12 @@ import butterknife.ButterKnife;
 /**
  * 确认订单界面Activity
  */
-public class ActivityCheck extends AppCompatActivity {
+public class CheckActivity extends AppCompatActivity {
 
     private static OrderBean orderData;
-    private AdapterOrderFood adapterOrderFood;
+    private OrderFoodAdapter orderFoodAdapter;
     private long time = 0;
-    private AdapterCoupon adapterCoupon;
+    private CouponAdapter couponAdapter;
     @BindView(R.id.sureBuy)
     TextView surebuy;
     @BindView(R.id.orderPrice)
@@ -51,7 +51,7 @@ public class ActivityCheck extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("确认订单");
-        ActivityMain.setViewPagerID(0);
+        MainActivity.setViewPagerID(0);
         setContentView(R.layout.activity_check);
         ButterKnife.bind(this);
         initView();
@@ -62,11 +62,11 @@ public class ActivityCheck extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void initView(){
         Integer price = orderData.getOrderPrice(); // 获得商品未打折价格
-        adapterCoupon = new AdapterCoupon(this,AppContext.getCouponeList(price,orderData.getHasGroup()),price,orderData.getHasGroup());
-        couponlistview.setAdapter(adapterCoupon);
-        adapterOrderFood = new AdapterOrderFood(this,orderData.getOrderFoodList());
-        orderFoodListView.setAdapter(adapterOrderFood);
-        final Integer afterCoupon = price - adapterCoupon.getMinusTotal(); // 商品打折后价格
+        couponAdapter = new CouponAdapter(this,AppContext.getCouponeList(price,orderData.getHasGroup()),price,orderData.getHasGroup());
+        couponlistview.setAdapter(couponAdapter);
+        orderFoodAdapter = new OrderFoodAdapter(this,orderData.getOrderFoodList());
+        orderFoodListView.setAdapter(orderFoodAdapter);
+        final Integer afterCoupon = price - couponAdapter.getMinusTotal(); // 商品打折后价格
         System.out.println(afterCoupon);
         orderPrice.setText("¥ " + afterCoupon);
         originPrice.setText("¥ " + price);
@@ -75,10 +75,10 @@ public class ActivityCheck extends AppCompatActivity {
             public void onClick(View v) { // 确认购买操作
                 getSupportActionBar().hide();
                 AppContext.getCart().clear();
-                FragmentMake.setPrice();
-                final Intent intent = new Intent(ActivityCheck.this, ActivityOrder.class);
+                MakeFragment.setPrice();
+                final Intent intent = new Intent(CheckActivity.this, OrderActivity.class);
                 orderData.setOrderActualPrice(afterCoupon);
-                ActivityOrder.setOrderData(orderData); // 将订单数据传给订单页面
+                OrderActivity.setOrderData(orderData); // 将订单数据传给订单页面
                 AppContext.updateOrder(orderData); // 更新订单数据
                 waitLayout.setVisibility(View.GONE);
                 payLayout.setVisibility(View.VISIBLE);
@@ -107,7 +107,7 @@ public class ActivityCheck extends AppCompatActivity {
         }, 1000);
     }
     public static void setOrderData(OrderBean orderData) {
-        ActivityCheck.orderData = orderData;
+        CheckActivity.orderData = orderData;
     }
 
     private void finish(Intent intent) {

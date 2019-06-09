@@ -5,7 +5,7 @@
     android:id="@+id/fragment_order_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.FragmentOrder">
+    tools:context=".ui.fragment.OrderFragment">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/noOrder"

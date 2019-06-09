@@ -7,21 +7,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
-import com.homework.getfood.ui.adapter.AdapterMainFragmentPager;
-import com.homework.getfood.ui.fragment.FragmentMake;
-import com.homework.getfood.ui.fragment.FragmentOrder;
+import com.homework.getfood.ui.adapter.MainFragmentPagerAdapter;
+import com.homework.getfood.ui.fragment.MakeFragment;
+import com.homework.getfood.ui.fragment.OrderFragment;
 import com.homework.getfood.R;
 import com.homework.getfood.util.NoScrollViewPager;
 
 /**
  * 主界面Activity
  */
-public class ActivityMain extends AppCompatActivity {
-    private static FragmentMake fragment_make;
-    private static FragmentOrder fragment_order;
+public class MainActivity extends AppCompatActivity {
+    private static MakeFragment fragment_make;
+    private static OrderFragment fragment_order;
     private TabLayout mTabLayout;
     static private NoScrollViewPager mViewPager;
-    private AdapterMainFragmentPager FragmentPagerAdapter;
+    private MainFragmentPagerAdapter FragmentPagerAdapter;
     private long time = 0;
     final int[] unselectedIcon = new int[]{
             R.drawable.ic_menu_unselected,
@@ -45,7 +45,7 @@ public class ActivityMain extends AppCompatActivity {
     private void initViews(){
         mViewPager = (NoScrollViewPager) findViewById(R.id.viewPager);
         mViewPager.setScroll(false);
-        FragmentPagerAdapter = new AdapterMainFragmentPager(getSupportFragmentManager()){
+        FragmentPagerAdapter = new MainFragmentPagerAdapter(getSupportFragmentManager()){
             @Override
             public int getItemPosition(Object object) {
                 return POSITION_NONE;
@@ -80,24 +80,24 @@ public class ActivityMain extends AppCompatActivity {
 
         mTabLayout.getTabAt(0).setIcon(selectedIcon[0]);
         mTabLayout.getTabAt(1).setIcon(unselectedIcon[1]);
-        fragment_order = (FragmentOrder) this.getSupportFragmentManager().findFragmentById(R.id.fragment_order_id);
-        fragment_make = (FragmentMake) this.getSupportFragmentManager().findFragmentById(R.id.fragment_make_id);
+        fragment_order = (OrderFragment) this.getSupportFragmentManager().findFragmentById(R.id.fragment_order_id);
+        fragment_make = (MakeFragment) this.getSupportFragmentManager().findFragmentById(R.id.fragment_make_id);
     }
 
     public static void setViewPagerID(int id){
         mViewPager.setCurrentItem(id);
     }
-    public static FragmentOrder getFragment_order(){
+    public static OrderFragment getFragment_order(){
         return fragment_order;
     }
 
-    public static void setFragment_order(FragmentOrder fragment_order) {
-        ActivityMain.fragment_order = fragment_order;
+    public static void setFragment_order(OrderFragment fragment_order) {
+        MainActivity.fragment_order = fragment_order;
     }
-    public static void setFragment_make(FragmentMake fragment_make){
-        ActivityMain.fragment_make = fragment_make;
+    public static void setFragment_make(MakeFragment fragment_make){
+        MainActivity.fragment_make = fragment_make;
     }
-    public static FragmentMake getFragment_make(){
+    public static MakeFragment getFragment_make(){
         return fragment_make;
     }
 
