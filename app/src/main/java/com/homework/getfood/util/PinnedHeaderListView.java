@@ -16,7 +16,7 @@ import com.homework.getfood.ui.adapter.SectionedBaseAdapter;
 
 /**
  * 双联动ListView -> 类似点餐外卖
- * Code from : https://github.com/wjie2014/DoubleListViewLinkage
+ * Reference Code : https://github.com/wjie2014/DoubleListViewLinkage
  */
 public class PinnedHeaderListView extends ListView implements OnScrollListener {
 

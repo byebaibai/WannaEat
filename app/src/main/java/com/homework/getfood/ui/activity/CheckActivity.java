@@ -112,7 +112,7 @@ public class CheckActivity extends AppCompatActivity {
 
     private void finish(Intent intent) {
         startActivity(intent);
-    }
+    } // 跳转到订单详情页
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

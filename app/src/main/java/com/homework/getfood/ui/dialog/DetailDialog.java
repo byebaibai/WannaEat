@@ -19,27 +19,27 @@ import co.ceryle.radiorealbutton.RadioRealButtonGroup;
  * 商品确认 单元
  */
 public class DetailDialog extends Dialog {
-    final private static String[] spicyDegreeString = new String[]{"(微辣)","(中辣)", "(猛辣)"}; //辣度
-    private static int spicyDegreeID = 0; //辣度Id
+    final private static String[] spicyDegreeString = new String[]{"(微辣)","(中辣)", "(猛辣)"}; // 辣度
+    private static int spicyDegreeID = 0; // 辣度Id
     private Button yesButton;
     private Button noButton;
     private TextView foodName;
-    private ImageView foodImage;
+    private ImageView foodImage; // 食物图片
     private TextView foodPrice;
     private TextView foodNumber;
-    private Integer totalPrice; //食物总价
-    private Integer onePrice; //食物单价
-    private RadioRealButtonGroup canSpicyButtonGroup; //辣度选择按钮组
-    private String foodNameStr; //从外界设置的title文本
-    private String foodPriceStr; //食物价格
+    private Integer totalPrice; // 食物总价
+    private Integer onePrice; // 食物单价
+    private RadioRealButtonGroup canSpicyButtonGroup; // 辣度选择按钮组
+    private String foodNameStr; // 从外界设置的title文本
+    private String foodPriceStr; // 食物价格
     private onNoOnclickListener noOnclickListener;
     private onYesOnclickListener yesOnclickListener;
-    private boolean canSpicy; //食物是否啦
+    private boolean canSpicy; // 食物是否辣
     private ImageButton addButton;
     private ImageButton minusButton;
-    private Integer foodNum = 1; //食物数目
-    private int imageID; //食物图片ID
-    private TextView foodDetail; //食物描述
+    private Integer foodNum = 1; // 食物数目
+    private int imageID; // 食物图片ID
+    private TextView foodDetail; // 食物描述
     private String detailString;
     private Context mContext;
     public DetailDialog(Context context, int imageId) {

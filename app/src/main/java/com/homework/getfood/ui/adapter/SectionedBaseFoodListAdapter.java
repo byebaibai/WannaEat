@@ -96,7 +96,7 @@ public class SectionedBaseFoodListAdapter extends SectionedBaseAdapter {
                         Integer num = detailDialog.getInfo();
                         if (num == 0) num ++;
                         FoodBean newItem = new FoodBean(fb.getId(),fb.getTypeID(),fb.getType(),fb.getName(),fb.getPrice(),fb.getIcon(),num,fb.getGroup(),fb.getDetail());
-                        if (fb.getSpicy()) newItem.setName(fb.getName() + DetailDialog.getSpicy());
+                        if (fb.getSpicy()) newItem.setName(fb.getName() + DetailDialog.getSpicy()); // 如果食物是辣的，则设置其辣度
                         if (!cartMap.containsKey(newItem.getName())) cartMap.put(newItem.getName(),newItem);
                         else{
                             FoodBean temp = cartMap.get(newItem.getName());
