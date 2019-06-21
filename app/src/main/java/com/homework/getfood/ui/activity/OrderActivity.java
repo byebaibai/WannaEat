@@ -59,37 +59,37 @@ public class OrderActivity extends AppCompatActivity {
     private void initView(){
         Integer price = orderData.getOrderPrice(); // 获得订单的未优惠之后的价格
         couponAdapter = new CouponAdapter(this, AppContext.getCouponeList(price,orderData.getHasGroup()),price,orderData.getHasGroup());
-        couponlistview.setAdapter(couponAdapter);
-        orderTime.setText(orderData.getOrderTime());
-        orderID.setText(orderData.getOrderID().toString());
+        couponlistview.setAdapter(couponAdapter); // 设置优惠券ListView显示
+        orderTime.setText(orderData.getOrderTime()); // 设置订单时间
+        orderID.setText(orderData.getOrderID().toString()); // 设置订单ID
         orderFoodAdapter = new OrderFoodAdapter(this,orderData.getOrderFoodList());
-        orderFoodListView.setAdapter(orderFoodAdapter);
+        orderFoodListView.setAdapter(orderFoodAdapter); // 设置订单菜品ListView显示
         Integer afterCoupon = price - couponAdapter.getMinusTotal(); // 使用优惠券之后的价格
-        orderPrice.setText("¥ " + afterCoupon);
-        originPrice.setText("¥ " + price);
+        orderPrice.setText("¥ " + afterCoupon); // 设置订单优惠后的价格
+        originPrice.setText("¥ " + price); // 设置订单原价
         buyBuy.setOnClickListener(new View.OnClickListener() { // 到订餐页面
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { // 点击“继续购物”按钮
                 OrderFragment of = MainActivity.getFragment_order();
                 MakeFragment mf = MainActivity.getFragment_make();
-                if (mf != null) mf.refreshCart();
-                if (of != null) of.notifyData();
+                if (mf != null) mf.refreshCart(); // 更新点单页面购物车的显示
+                if (of != null) of.notifyData(); // 更新订单页面的显示
                 else System.out.println("None");
                 Intent intent = new Intent(OrderActivity.this, MainActivity.class);
-                MainActivity.setViewPagerID(0);
+                MainActivity.setViewPagerID(0); // 设置跳转的Fragment
                 startActivity(intent);
             }
         });
         orderOrder.setOnClickListener(new View.OnClickListener() { // 到订单页面
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { // 点击“我的订单”按钮
                 OrderFragment of = MainActivity.getFragment_order();
                 MakeFragment mf = MainActivity.getFragment_make();
-                if (mf != null) mf.refreshCart();
-                if (of != null) of.notifyData();
+                if (mf != null) mf.refreshCart(); // 更新点单页面购物车的显示
+                if (of != null) of.notifyData(); // 更新订单页面的显示
                 else System.out.println("None");
                 Intent intent = new Intent(OrderActivity.this, MainActivity.class);
-                MainActivity.setViewPagerID(1);
+                MainActivity.setViewPagerID(1); // 设置跳转的Fragment
                 startActivity(intent);
             }
         });

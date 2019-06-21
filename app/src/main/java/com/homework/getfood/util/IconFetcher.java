@@ -29,3 +29,4 @@ public class IconFetcher extends Application {
         }
     }
 }
+

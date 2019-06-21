@@ -18,10 +18,6 @@ public class NoScrollViewPager extends ViewPager {
         super(context);
     }
     @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        return super.dispatchTouchEvent(ev);
-    }
-    @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         if (isScroll){
             return super.onInterceptTouchEvent(ev);
@@ -41,3 +37,4 @@ public class NoScrollViewPager extends ViewPager {
         isScroll = scroll;
     }
 }
+

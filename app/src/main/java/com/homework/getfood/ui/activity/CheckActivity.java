@@ -67,7 +67,6 @@ public class CheckActivity extends AppCompatActivity {
         orderFoodAdapter = new OrderFoodAdapter(this,orderData.getOrderFoodList());
         orderFoodListView.setAdapter(orderFoodAdapter);
         final Integer afterCoupon = price - couponAdapter.getMinusTotal(); // 商品打折后价格
-        System.out.println(afterCoupon);
         orderPrice.setText("¥ " + afterCoupon);
         originPrice.setText("¥ " + price);
         surebuy.setOnClickListener(new View.OnClickListener() {
