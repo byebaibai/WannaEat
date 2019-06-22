@@ -21,12 +21,12 @@ import co.ceryle.radiorealbutton.RadioRealButtonGroup;
 public class DetailDialog extends Dialog {
     final private static String[] spicyDegreeString = new String[]{"(微辣)","(中辣)", "(猛辣)"}; // 辣度
     private static int spicyDegreeID = 0; // 辣度Id
-    private Button yesButton;
-    private Button noButton;
-    private TextView foodName;
+    private Button yesButton; // 确认按钮
+    private Button noButton; // 取消按钮
+    private TextView foodName; // 食物名字文本
     private ImageView foodImage; // 食物图片
-    private TextView foodPrice;
-    private TextView foodNumber;
+    private TextView foodPrice; // 食物价格文本
+    private TextView foodNumber; // 食物数目文本
     private Integer totalPrice; // 食物总价
     private Integer onePrice; // 食物单价
     private RadioRealButtonGroup canSpicyButtonGroup; // 辣度选择按钮组
@@ -35,12 +35,12 @@ public class DetailDialog extends Dialog {
     private onNoOnclickListener noOnclickListener;
     private onYesOnclickListener yesOnclickListener;
     private boolean canSpicy; // 食物是否辣
-    private ImageButton addButton;
-    private ImageButton minusButton;
+    private ImageButton addButton; // 增加按钮
+    private ImageButton minusButton; //减少 按钮
     private Integer foodNum = 1; // 食物数目
     private int imageID; // 食物图片ID
-    private TextView foodDetail; // 食物描述
-    private String detailString;
+    private TextView foodDetail; // 食物描述文本框
+    private String detailString; //食物描述文本
     private Context mContext;
     public DetailDialog(Context context, int imageId) {
         super(context, R.style.DetailDialog);
@@ -80,12 +80,12 @@ public class DetailDialog extends Dialog {
 
         canSpicyButtonGroup.setOnClickedButtonListener(new RadioRealButtonGroup.OnClickedButtonListener() {
             @Override
-            public void onClickedButton(RadioRealButton button, int position) {
+            public void onClickedButton(RadioRealButton button, int position) { // 获得当前辣度ID
                 spicyDegreeID = position;
             }
         });
 
-        if (!canSpicy){
+        if (!canSpicy){ // 如果菜品是辣度，则显示辣度按钮组
             canSpicyButtonGroup.setVisibility(View.GONE);
         }else{
             canSpicyButtonGroup.setVisibility(View.VISIBLE);
@@ -100,7 +100,6 @@ public class DetailDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 if (yesOnclickListener != null) {
-                    System.out.println("Yes!");
                     yesOnclickListener.onYesClick();
                 }
             }
@@ -110,7 +109,6 @@ public class DetailDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 if (noOnclickListener != null) {
-                    System.out.println("No");
                     noOnclickListener.onNoClick();
                 }
             }
@@ -162,7 +160,8 @@ public class DetailDialog extends Dialog {
     public void setName(String name){
         foodNameStr = name;
     }
-    public void setInfo(String name, String price, boolean spicy,String detail){ // 设置数据
+
+    public void setInfo(String name, String price, boolean spicy,String detail){ // 从外界设置Dialog数据
         onePrice = Integer.parseInt(price);
         foodPriceStr = price + "¥";
         foodNameStr = name;

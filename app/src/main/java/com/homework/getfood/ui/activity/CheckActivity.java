@@ -130,7 +130,6 @@ public class CheckActivity extends AppCompatActivity {
             time = System.currentTimeMillis();
             showToast("再点击一次退出应用程序");
         }else{
-            System.out.println("??");
             this.finishAffinity();
             System.exit(0);
         }
